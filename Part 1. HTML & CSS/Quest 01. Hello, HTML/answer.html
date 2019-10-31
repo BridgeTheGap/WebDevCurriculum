@@ -3,57 +3,120 @@
 
 <head>
   <title>Github</title>
+
+  <!-- <style>
+    header {
+      background: black;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    header a {
+      color: white;
+      text-decoration: none;
+    }
+
+    header a:hover {
+      color: gray;
+    }
+
+    div[id*='repo-header-'] {
+      background: pink;
+    }
+
+    main {
+      width: 1200px;
+      margin: 0 auto;
+    }
+
+    #repo-header {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    #repo-header-left {
+      display: flex;
+    }
+
+    .repo-tab-selector>* {
+      padding: 1rem;
+      display: inline-block;
+    }
+
+    .clickable {
+      cursor: pointer;
+    }
+
+    .repo-tab-count-label {
+      font-weight: bold;
+      background: gray;
+      border-radius: 50%;
+    }
+
+    .link-text {
+      color: blue;
+    }
+
+    .bold {
+      font-weight: bold;
+    }
+  </style> -->
+
 </head>
 
 <body>
   <header>
-    <a id='btn-home' href=''>
-      <img src='' alt="Github logo">
-    </a>
-    <span id='container-search-bar'>
-      <input type='text' id='search-bar' name='repo' placeholder='Search or jump to...' />
+    <span id='header-left'>
+      <a id='btn-home' href=''>
+        <img src='' alt="Github logo">
+      </a>
+      <span id='container-search-bar'>
+        <input type='text' id='search-bar' name='repo' placeholder='Search or jump to...' />
+      </span>
+      <a id='btn-pr' class='header-txt-btn' href=''>Pull requests</a>
+      <a id='btn-issues' class='header-txt-btn' href=''>Issues</a>
+      <a id='btn-market' class='header-txt-btn' href=''>Marketplace</a>
+      <a id='btn-explore' class='header-txt-btn' href=''>Explore</a>
     </span>
-    <a id='btn-pr' class='header-txt-btn' href=''>Pull requests</a>
-    <a id='btn-issues' class='header-txt-btn' href=''>Issues</a>
-    <a id='btn-market' class='header-txt-btn' href=''>Marketplace</a>
-    <a id='btn-explore' class='header-txt-btn' href=''>Explore</a>
-    <a id='btn-noti' href=''>
-      <img src='' alt='alert icon'>
-    </a>
-    <span class='clickable' id='btn-add'>
-      <img src='' alt='plus button' />
-    </span>
-    <span class='clickable' id='btn-profile'>
-      <img src='' alt='avatar image' />
+    <span id='header-right'>
+      <a id='btn-noti' href=''>
+        <img src='' alt='alert icon'>
+      </a>
+      <span class='clickable' id='btn-add'>
+        <img src='' alt='plus button'>
+      </span>
+      <span class='clickable' id='btn-profile'>
+        <img src='' alt='avatar image'>
+      </span>
     </span>
   </header>
 
   <main>
     <section id='repo-header'>
-      <div class='repo-header-left'>
-        <img src='' alt='repo icon'>
+      <div id='repo-header-left'>
+        <div><img src='' alt='repo icon'></div>
+        <div>
+          <a id='repo-owner-id' href='' class='repo-nav-text'>funct7</a>
+          /
+          <a id='repo-name' href='' class='repo-nav-text bold'>WebDevCurriculum</a><br>
+          forked from
+          <a href='' id='repo-origin'>Knowre-Dev/WebDevCurriculum</a>
+        </div>
       </div>
-      <span>
-        <a id='repo-owner-id' href='' class='repo-nav-text'>funct7</a>
-        /
-        <a id='repo-name' href='' class='repo-nav-text bold'>WebDevCurriculum</a><br>
-        forked from
-        <a href='' id='repo-origin'>Knowre-Dev/WebDevCurriculum</a>
-      </span>
 
-      <div class='repo-header-right'>
+      <div id='repo-header-right'>
         <span class='clickable countable-button'>
           <span class='countable-button-title'>
-            <img src='' alt='visibility' />
+            <img src='' alt='visibility'>
             Unwatch
-            <img src='' alt='dropdown-arrow' />
+            <img src='' alt='dropdown-arrow'>
           </span>
           <span class='countable-button-count' id='btn-watch-count' />
         </span>
 
         <span class='clickable countable-button'>
           <span class='countable-button-title'>
-            <img src='' alt='star image' />
+            <img src='' alt='star image'>
             Star
           </span>
           <span class='countable-button-count' id='btn-star-count' />
@@ -61,7 +124,7 @@
 
         <span class='clickable countable-button'>
           <span class='countable-button-title'>
-            <img src='' alt='fork image' />
+            <img src='' alt='fork image'>
             Fork
           </span>
           <span class='countable-button-count' id='btn-fork-count' />
@@ -72,34 +135,34 @@
 
     <section class='repo-tab-selector'>
       <span class='clickable repo-tab-default' id='tab-code'>
-        <img src='' alt='tag image' />
+        <img src='' alt='tag image'>
         Code
       </span>
 
       <span class='clickable repo-tab-countable' id='tab-pr'>
-        <img src='' alt='pull request image' />
+        <img src='' alt='pull request image'>
         Pull requests
         <span class='repo-tab-count-label' id='pr-count' />
       </span>
 
       <span class='clickable repo-tab-countable' id='tab-projects'>
-        <img src='' alt='projects' />
+        <img src='' alt='projects'>
         Projects
         <span class='repo-tab-count-label' id='projects-count' />
       </span>
 
       <span class='clickable repo-tab-default' id='tab-security'>
-        <img src='' alt='shield' />
+        <img src='' alt='shield'>
         Security
       </span>
 
       <span class='clickable repo-tab-default' id='tab-insights'>
-        <img src='' alt='chart' />
+        <img src='' alt='chart'>
         Insights
       </span>
 
       <span class='clickable repo-tab-default' id='tab-settings'>
-        <img src='' alt='cogwheel' />
+        <img src='' alt='cogwheel'>
         Settings
       </span>
     </section>
@@ -118,31 +181,31 @@
       <div class='bordered'>
         <div>
           <span id='btn-commit-all' class='clickable btn-code-overview'>
-            <img src='' alt='commit' />
+            <img src='' alt='commit'>
             <span class='code-overview-count-label' />
             commits
           </span>
 
           <span id='btn-branch-all' class='clickable btn-code-overview'>
-            <img src='' alt='branch' />
+            <img src='' alt='branch'>
             <span class='code-overview-count-label' />
             branches
           </span>
 
           <span id='btn-tag-all' class='clickable btn-code-overview'>
-            <img src='' alt='tag' />
+            <img src='' alt='tag'>
             <span class='code-overview-count-label' />
             releases
           </span>
 
           <span id='btn-contributor-all' class='clickable btn-code-overview'>
-            <img src='' alt='contributors' />
+            <img src='' alt='contributors'>
             <span class='code-overview-count-label' />
             contributors
           </span>
 
           <span id='btn-license' class='clickable btn-code-overview'>
-            <img src='' alt='license' />
+            <img src='' alt='license'>
             MIT
           </span>
         </div>
@@ -154,7 +217,7 @@
           <span id='btn-select-branch' class='clickable btn-standard'>
             Branch:
             <span id='branch-name-label' class='bold' />
-            <img src='' alt='chevron-down' />
+            <img src='' alt='chevron-down'>
           </span>
 
           <span id='btn-new-pr' class='clickable btn-standard bold'>New pull request</span>
@@ -168,7 +231,7 @@
 
           <span id='btn-clone' class='clickable bold'>
             Clone or download
-            <img src='' alt='chevron-down' />
+            <img src='' alt='chevron-down'>
           </span>
         </div>
       </div>
@@ -176,12 +239,12 @@
       <div id='container-file-list' class='container'>
         <span id='file-list-header'>
           <span class='clickable hoverable'>
-            <img src='' alt='pull request' />
+            <img src='' alt='pull request'>
             Pull request
           </span>
 
           <span class='clickable hoverable'>
-            <img src='' alt='file compare' />
+            <img src='' alt='file compare'>
             Compare
           </span>
         </span>
@@ -190,7 +253,7 @@
           <thead>
             <tr>
               <th>
-                <img id='avatar-user' alt='last commit user avatar' />
+                <img id='avatar-user' alt='last commit user avatar'>
                 <span id='last-commit-user-id' class='bold' />
                 <span id='last-commit-message' />
                 Last commit
@@ -215,38 +278,5 @@
 
   </main>
 </body>
-<!-- 
-<style>
-  div[class*='repo-header-'] {
-    background: pink;
-    height: 2rem;
-  }
-
-  .repo-header-left {
-    float: left;
-  }
-
-  .repo-header-right {
-    float: right;
-  }
-
-  .clickable {
-    cursor: pointer;
-  }
-
-  .repo-tab-count-label {
-    font-weight: bold;
-    background: gray;
-    border-radius: 50%;
-  }
-
-  .link-text {
-    color: blue;
-  }
-
-  .bold {
-    font-weight: bold;
-  }
-</style> -->
 
 </html>
