@@ -73,7 +73,7 @@
       <span id='container-search-bar'>
         <input type='text' id='search-bar' name='repo' placeholder='Search or jump to...' />
       </span>
-      <a id='btn-pr' class='header-txt-btn' href=''>Pull requests</a>
+      <a id='btn-pr' class='btn-pr btn' href=''>Pull requests</a>
       <a id='btn-issues' class='header-txt-btn' href=''>Issues</a>
       <a id='btn-market' class='header-txt-btn' href=''>Marketplace</a>
       <a id='btn-explore' class='header-txt-btn' href=''>Explore</a>
@@ -146,7 +146,7 @@
       </span>
 
       <span class='clickable repo-tab-countable' id='tab-projects'>
-        <img src='' alt='projects'>
+        <img src='' alt="projects">
         Projects
         <span class='repo-tab-count-label' id='projects-count' />
       </span>
@@ -280,3 +280,13 @@
 </body>
 
 </html>
+
+<!--
+  Feedback
+  1. HTML은 기본적으로 "문서"의 입장에서 구조화 해볼 것.
+  2. XML과 HTML의 차이점을 인지하고 문서 작성.
+  3. `id`를 사용하는 것은 전역 변수를 생성하기 때문에 지양하는 것이 좋다. (안드와는 다르게 사용할 것!)
+  4. class의 내용을 통해 엘리먼트가 어디에 속하는 지 아는 것이 가능한 것보다는 관계를 통해 CSS 룰을 적용해보자.
+     에) .repo .header-left .text { font-size: 1rem; } // 자연스럽게 repo에 속한 좌측 헤더의 텍스트라는 걸 알 수 있음.
+     즉, 현재의 `-`로 지정한 이름을 엘리먼트 위계에 따라 분리해주면 좋은 그림이 나올 것 같다.
+ -->
