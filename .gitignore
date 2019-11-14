@@ -6,3 +6,5 @@ bower_components/*
 **/.DS_Store
 **/Thumbs.db
 npm-debug.log
+
+**/playground
