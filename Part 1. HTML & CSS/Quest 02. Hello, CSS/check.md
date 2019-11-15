@@ -44,7 +44,10 @@
    - `clear` 를 안 해주면 레이아웃이 와장창.
    - 다소 예상 밖의 행동을 하는 경우가 있다. (특히 IE6)
 6. Flexbox(Flexible box)와 CSS Grid의 차이와 장단점은 무엇일까요?
-   - 
+   - Flex: 1d, Grid: 2d
+   - Flex는 목록의 아이템을 유동적으로 정렬하는 느낌이라면 grid는 화면의 레이아웃을 유동적으로 정렬하기 위한 느낌.
+   - Grid는 레이어를 여러 겹 두기 용이할 것으로 보임.
+   - Grid가 비교적 최근에 나온 것으로 브라우저 지원이 덜함.
 
 ## Question
 1. `width|height` 대신 `(inline|block)-size` 또는 `left|right` 대신 `(inline|block)-(start|end)` 를 많이 쓰는가?
