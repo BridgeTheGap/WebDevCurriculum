@@ -7,107 +7,108 @@
 </head>
 
 <body>
-	<header>
-		<span id='header-left'>
-			<a id='btn-home' href=''>
-				<img src='' alt="Github logo">
-			</a>
-			<span id='container-search-bar'>
-				<input type='text' id='search-bar' name='repo' placeholder='Search or jump to...' />
-			</span>
-			<a id='btn-pr' class='btn-pr btn' href=''>Pull requests</a>
-			<a id='btn-issues' class='header-txt-btn' href=''>Issues</a>
-			<a id='btn-market' class='header-txt-btn' href=''>Marketplace</a>
-			<a id='btn-explore' class='header-txt-btn' href=''>Explore</a>
-		</span>
-		<span id='header-right'>
-			<a id='btn-noti' href=''>
-				<img src='' alt='alert icon'>
-			</a>
-			<span class='clickable' id='btn-add'>
-				<img src='' alt='plus button'>
-			</span>
-			<span class='clickable' id='btn-profile'>
-				<img src='' alt='avatar image'>
-			</span>
-		</span>
-	</header>
+	<nav class="content">
+		<a href="https://github.com" class="logo">
+			<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 16 16">
+				<path fill-rule="evenodd"
+					d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+			</svg>
+		</a>
 
+		<input type="text" placeholder="Search or jump to...">
+
+		<ul>
+			<li><a href="#">Pull requests</a></li>
+			<li><a href="#">Issues</a></li>
+			<li><a href="#">Marketplace</a></li>
+			<li><a href="#">Explore</a></li>
+		</ul>
+		<section class="menu">
+			<ul>
+				<li class="notifications">
+					<a href="#">
+						<svg xmlns="http://www.w3.org/2000/svg" width="15" height="16" viewBox="0 0 15 16">
+							<path fill-rule="evenodd"
+								d="M14 12v1H0v-1l.73-.58c.77-.77.81-2.55 1.19-4.42C2.69 3.23 6 2 6 2c0-.55.45-1 1-1s1 .45 1 1c0 0 3.39 1.23 4.16 5 .38 1.88.42 3.66 1.19 4.42l.66.58H14zm-7 4c1.11 0 2-.89 2-2H5c0 1.11.89 2 2 2z" />
+						</svg>
+					</a>
+				</li>
+				<li class="btn-drop-down create">
+					<a href="#">
+						<svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" viewBox="0 0 12 16">
+							<path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z" />
+						</svg>
+						<svg xmlns="http://www.w3.org/2000/svg" width="9" height="12" viewBox="0 0 12 16">
+							<path fill-rule="evenodd" d="M0 5l6 6 6-6H0z" />
+						</svg>
+					</a>
+				</li>
+				<li class="btn-drop-down profile">
+					<a href="#">
+						<img src="" alt="avatar">
+						<svg xmlns="http://www.w3.org/2000/svg" width="9" height="12" viewBox="0 0 12 16">
+							<path fill-rule="evenodd" d="M0 5l6 6 6-6H0z" />
+						</svg>
+					</a></li>
+			</ul>
+		</section>
+	</nav>
+
+	<!-- Refactor BEGIN -->
 	<main>
-		<section id='repo-header'>
-			<div id='repo-header-left'>
-				<div><img src='' alt='repo icon'></div>
-				<div>
-					<a id='repo-owner-id' href='' class='repo-nav-text'>funct7</a>
-					/
-					<a id='repo-name' href='' class='repo-nav-text bold'>WebDevCurriculum</a><br>
-					forked from
-					<a href='' id='repo-origin'>Knowre-Dev/WebDevCurriculum</a>
+		<header class="content">
+			<h1>
+				<a href="#"><span class="user-id">funct7</span></a> /
+				<a href="#"><span class="repo-name">WebDevCurriculum</span></a>
+			</h1>
+			<aside>
+				<ul>
+					<li class="action-count watch">
+						<span class="btn-drop-down">Watch</span><a href="#">19</a>
+					</li>
+					<li class="action-count star">
+						<span>Star</span><a href="#">113</a>
+					</li>
+					<li class="action-count fork">
+						<span>Fork</span><a href="#">106</a>
+					</li>
+				</ul>
+				<div class="drop-down">
+					<table>
+						<th>Notifications</th>
+						<tr>
+							<td class="checkable not-watching"></td>
+							<td>Not watching</td>
+						</tr>
+						<tr>
+							<td class="checkable not-watching"></td>
+							<td>Releases only</td>
+						</tr>
+						<tr>
+							<td class="checkable watching"><img src="" alt="check mark"></td>
+							<td>Watching</td>
+						</tr>
+						<tr>
+							<td class="checkable not-watching"></td>
+							<td>Ignoring</td>
+						</tr>
+					</table>
 				</div>
-			</div>
+			</aside>
+		</header>
+		<nav class="content">
+			<ul>
+				<li class="code selected">Code</li>
+				<li class="pull-request">Pull requests<span class="badge">0</span></li>
+				<li class="actions">Actions</li>
+				<li class="projects">Projects<span class="badge">0</span></li>
+				<li class="security">Security</li>
+				<li class="insights">Insights</li>
+				<li class="settings">Settings</li>
+			</ul>
+		</nav>
 
-			<div id='repo-header-right'>
-				<span class='clickable countable-button'>
-					<span class='countable-button-title'>
-						<img src='' alt='visibility'>
-						Unwatch
-						<img src='' alt='dropdown-arrow'>
-					</span>
-					<span class='countable-button-count' id='btn-watch-count' />
-				</span>
-
-				<span class='clickable countable-button'>
-					<span class='countable-button-title'>
-						<img src='' alt='star image'>
-						Star
-					</span>
-					<span class='countable-button-count' id='btn-star-count' />
-				</span>
-
-				<span class='clickable countable-button'>
-					<span class='countable-button-title'>
-						<img src='' alt='fork image'>
-						Fork
-					</span>
-					<span class='countable-button-count' id='btn-fork-count' />
-				</span>
-			</div>
-
-		</section>
-
-		<section class='repo-tab-selector'>
-			<span class='clickable repo-tab-default' id='tab-code'>
-				<img src='' alt='tag image'>
-				Code
-			</span>
-
-			<span class='clickable repo-tab-countable' id='tab-pr'>
-				<img src='' alt='pull request image'>
-				Pull requests
-				<span class='repo-tab-count-label' id='pr-count' />
-			</span>
-
-			<span class='clickable repo-tab-countable' id='tab-projects'>
-				<img src='' alt="projects">
-				Projects
-				<span class='repo-tab-count-label' id='projects-count' />
-			</span>
-
-			<span class='clickable repo-tab-default' id='tab-security'>
-				<img src='' alt='shield'>
-				Security
-			</span>
-
-			<span class='clickable repo-tab-default' id='tab-insights'>
-				<img src='' alt='chart'>
-				Insights
-			</span>
-
-			<span class='clickable repo-tab-default' id='tab-settings'>
-				<img src='' alt='cogwheel'>
-				Settings
-			</span>
-		</section>
+		<!-- Refactor END -->
 
 		<section id='code-content'>
 			<div>
