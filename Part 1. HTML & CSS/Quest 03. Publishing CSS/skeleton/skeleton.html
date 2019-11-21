@@ -54,7 +54,6 @@
 		</section>
 	</nav>
 
-	<!-- Refactor BEGIN -->
 	<main>
 		<header class="content">
 			<h1>
@@ -63,14 +62,17 @@
 			</h1>
 			<aside>
 				<ul>
-					<li class="action-count watch">
-						<span class="btn-drop-down">Watch</span><a href="#">19</a>
+					<li class="action-count watch font-button">
+						<span class="btn-drop-down dimen-button fill-button border-button">Watch</span>
+						<a href="#" class="dimen-button">19</a>
 					</li>
-					<li class="action-count star">
-						<span>Star</span><a href="#">113</a>
+					<li class="action-count star font-button">
+						<span class="font-button dimen-button fill-button border-button">Star</span>
+						<a href="#" class="dimen-button">113</a>
 					</li>
-					<li class="action-count fork">
-						<span>Fork</span><a href="#">106</a>
+					<li class="action-count fork font-button">
+						<span class="font-button dimen-button fill-button border-button">Fork</span>
+						<a href="#" class="dimen-button">106</a>
 					</li>
 				</ul>
 				<div class="drop-down">
@@ -108,17 +110,14 @@
 			</ul>
 		</nav>
 
-		<!-- Refactor END -->
-
-		<section id='code-content'>
-			<div>
-				<span id='repo-description' />
-				<button type='button'>Edit</button>
-			</div>
-
-			<div>
-				<span id='repo-topic-list' />
-				<span id='btn-repo-topic' class='clickable link-text'>Manage topics</span>
+		<!-- Refactor BEGIN -->
+		<section class="content code">
+			<header>
+				<h2>KnowRe web development curriculum for noobs</h2>
+				<button type="button" class="font-button dimen-button fill-button border-button">Edit</button>
+			</header>
+			<span id='repo-topic-list' />
+			<span id='btn-repo-topic' class='clickable link-text'>Manage topics</span>
 			</div>
 
 			<div class='bordered'>
@@ -212,6 +211,8 @@
 
 			<div id='container-file-content' class='container' />
 		</section>
+
+		<!-- Refactor END -->
 
 		<section id='pr-content' />
 		<section id='projects-content' />

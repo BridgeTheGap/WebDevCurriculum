@@ -132,10 +132,19 @@ main header aside ul {
   list-style: none;
 }
 
-main aside ul li {
-  margin: auto 5px;
+main aside ul > li {
   display: flex;
-  font-weight: 500;
+}
+
+main aside ul > li:not(:first-child):not(:last-child) {
+  margin: auto 4px;
+}
+
+main aside ul > li:first-child {
+  margin-right: 4px;
+}
+main aside ul > li:last-child {
+  margin-left: 4px;
 }
 
 main aside .action-count > a:hover {
@@ -245,6 +254,16 @@ main > nav > ul > .settings::before {
   mask: url(./svg/gear.svg) no-repeat 50% 50%;
 }
 
+/* CODE */
+.code > header {
+  display: flex;
+  align-items: center;
+}
+
+.code > header button {
+  margin-left: auto;
+}
+
 /* GENERAL CLASS */
 
 .content {
@@ -256,12 +275,39 @@ main > nav > ul > .settings::before {
   display: none;
 }
 
+.font-button {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.dimen-button {
+  display: inline-block;
+  padding: 5px 9px;
+}
+
+.fill-button {
+  background: #f2f2f2;
+  cursor: pointer;
+}
+
+.fill-button:hover {
+  background: #eaeaea;
+}
+
+.border-button {
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+}
+
+.border-button:hover {
+  border: 1px solid #aaaaaa;
+}
+
 /* ACTION COUNT */
 
 .action-count > * {
   display: flex;
   align-items: center;
-  padding: 6px;
   box-sizing: border-box;
 }
 
@@ -270,13 +316,8 @@ main > nav > ul > .settings::before {
 }
 
 .action-count > span {
-  border: 1px solid lightgray;
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
-  cursor: pointer;
-  background: rgb(240, 240, 240);
-  display: inline-flex;
-  font-size: 14px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
 }
 
 .action-count > span:hover {
