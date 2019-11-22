@@ -610,3 +610,24 @@ main .controls .clone:hover {
 .action-count.fork > span::before {
   content: url(https://unpkg.com/octicons@8.5.0/build/svg/repo-forked.svg);
 }
+
+.btn-drop-down {
+  display: flex;
+  align-items: center;
+}
+
+.btn-drop-down.clone::after {
+  background: white;
+}
+
+.btn-drop-down::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  margin-left: 2px;
+  background: black;
+  -webkit-mask: url('./svg/triangle-down.svg') no-repeat 50% 50%;
+  mask: url('./svg/triangle-down.svg') no-repeat 50% 50%;
+  -webkit-mask-size: 10px 10px;
+  mask-size: 10px 10px;
+}
