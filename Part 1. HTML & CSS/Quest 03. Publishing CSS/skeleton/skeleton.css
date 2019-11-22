@@ -97,77 +97,79 @@ main {
   top: 10px;
 }
 
-main > header {
-  display: flex;
+.overview {
   background: #fafafa;
+  border-bottom: 1px solid lightgray;
 }
 
-main header h1 {
+.overview > header {
+  display: flex;
+}
+
+.overview > header h1 {
   font-size: x-large;
   background: no-repeat url(./svg/repo.svg) left 0% top 25%;
   background-size: auto 20px;
   padding-left: 20px;
 }
 
-main header h1 .user-id {
+.overview > header h1 .user-id {
   font-weight: normal;
 }
 
-main header a {
+.overview > header a {
   color: rgb(0, 119, 255);
 }
 
-main header a:hover {
+.overview > header a:hover {
   text-decoration: underline;
 }
 
 /* REPO ACCESSORY CONTROLS */
 
-main header aside {
+.overview > header aside {
   margin-left: auto;
 }
 
-main header aside ul {
+.overview > header aside ul {
   display: flex;
   list-style: none;
 }
 
-main aside ul > li {
+.overview aside ul > li {
   display: flex;
 }
 
-main aside ul > li:not(:first-child):not(:last-child) {
+.overview aside ul > li:not(:first-child):not(:last-child) {
   margin: auto 4px;
 }
 
-main aside ul > li:first-child {
+.overview aside ul > li:first-child {
   margin-right: 4px;
 }
-main aside ul > li:last-child {
+.overview aside ul > li:last-child {
   margin-left: 4px;
 }
 
-main aside .action-count > a:hover {
+.overview aside .action-count > a:hover {
   color: rgb(0, 119, 255);
 }
 
 /* MAIN NAV */
 
-main > nav {
-  background: #fafafa;
-  border-bottom: 1px solid lightgray;
+.overview > nav {
   height: 44px;
   padding-top: 10px;
 }
 
-main > nav > ul {
+.overview > nav > ul {
   margin: 0;
   height: 100%;
   justify-content: flex-start;
   align-items: center;
 }
 
-main > nav > ul > li {
+.overview > nav > ul > li {
   height: 100%;
   display: flex;
   align-items: center;
@@ -176,16 +178,16 @@ main > nav > ul > li {
   color: #666666;
 }
 
-main > nav > ul > li:hover,
-main > nav > ul > li.selected {
+.overview > nav > ul > li:hover,
+.overview > nav > ul > li.selected {
   color: black;
 }
 
-main > nav > ul > li.selected {
+.overview > nav > ul > li.selected {
   background: white;
 }
 
-main > nav > ul > li > .badge {
+.overview > nav > ul > li > .badge {
   width: 20px;
   height: 20px;
   background: lightgray;
@@ -197,7 +199,7 @@ main > nav > ul > li > .badge {
   color: #666666;
 }
 
-main > nav > ul > li::before {
+.overview > nav > ul > li::before {
   content: '';
   width: 16px;
   height: 16px;
@@ -207,72 +209,72 @@ main > nav > ul > li::before {
   background-color: #aaaaaa;
 }
 
-main > nav > ul > li.selected::before {
+.overview > nav > ul > li.selected::before {
   background-color: black;
 }
 
-main > nav > ul > .code::before {
+.overview > nav > ul > .code::before {
   -webkit-mask: url(https://unpkg.com/octicons@8.5.0/build/svg/code.svg)
     no-repeat 50% 50%;
   mask: url(https://unpkg.com/octicons@8.5.0/build/svg/code.svg) no-repeat 50%
     50%;
 }
 
-main > nav > ul > .pull-request::before {
+.overview > nav > ul > .pull-request::before {
   -webkit-mask: url(https://unpkg.com/octicons@8.5.0/build/svg/git-pull-request.svg)
     no-repeat 50% 50%;
   mask: url(https://unpkg.com/octicons@8.5.0/build/svg/git-pull-request.svg)
     no-repeat 50% 50%;
 }
 
-main > nav > ul > .actions::before {
+.overview > nav > ul > .actions::before {
   -webkit-mask: url(https://unpkg.com/octicons@8.5.0/build/svg/play.svg)
     no-repeat 50% 50%;
   mask: url(https://unpkg.com/octicons@8.5.0/build/svg/play.svg) no-repeat 50%
     50%;
 }
 
-main > nav > ul > .projects::before {
+.overview > nav > ul > .projects::before {
   -webkit-mask: url(https://unpkg.com/octicons@8.5.0/build/svg/project.svg)
     no-repeat 50% 50%;
   mask: url(https://unpkg.com/octicons@8.5.0/build/svg/project.svg) no-repeat
     50% 50%;
 }
 
-main > nav > ul > .security::before {
+.overview > nav > ul > .security::before {
   -webkit-mask: url(./svg/shield.svg) no-repeat 50% 50%;
   mask: url(./svg/shield.svg) no-repeat 50% 50%;
 }
 
-main > nav > ul > .insights::before {
+.overview > nav > ul > .insights::before {
   -webkit-mask: url(./svg/graph.svg) no-repeat 50% 50%;
   mask: url(./svg/graph.svg) no-repeat 50% 50%;
 }
 
-main > nav > ul > .settings::before {
+.overview > nav > ul > .settings::before {
   -webkit-mask: url(./svg/gear.svg) no-repeat 50% 50%;
   mask: url(./svg/gear.svg) no-repeat 50% 50%;
 }
 
 /* CODE */
-.code > header {
+main > header {
   display: flex;
   align-items: center;
 }
 
-.code > header button {
+main > header button {
   margin-left: auto;
 }
 
 /* CODE SUMMARY */
 
-.code .summary {
+main .summary {
   height: 50px;
   border: 1px solid #d0d0d0;
   border-radius: 4px;
 }
 
-.code .summary > ul {
+main .summary > ul {
   height: 42px;
   margin: 0;
   display: grid;
@@ -280,7 +282,7 @@ main > nav > ul > .settings::before {
   padding: 0;
 }
 
-.code .summary > ul > li {
+main .summary > ul > li {
   display: flex;
   grid-column: 1fr;
   align-items: center;
@@ -288,7 +290,7 @@ main > nav > ul > .settings::before {
   list-style: none;
 }
 
-.code .summary > ul > li::before {
+main .summary > ul > li::before {
   content: '';
   width: 16px;
   height: 16px;
@@ -299,113 +301,113 @@ main > nav > ul > .settings::before {
   background-color: #666666;
 }
 
-.code .summary > ul > li.commit::before {
+main .summary > ul > li.commit::before {
   -webkit-mask: url(./svg/history.svg) no-repeat 50% 50%;
   mask: url(./svg/history.svg) no-repeat 50% 50%;
 }
 
-.code .summary > ul > li.branch::before {
+main .summary > ul > li.branch::before {
   -webkit-mask: url(./svg/git-branch.svg) no-repeat 50% 50%;
   mask: url(./svg/git-branch.svg) no-repeat 50% 50%;
 }
 
-.code .summary > ul > li.tag::before {
+main .summary > ul > li.tag::before {
   -webkit-mask: url(./svg/tag.svg) no-repeat 50% 50%;
   mask: url(./svg/tag.svg) no-repeat 50% 50%;
 }
 
-.code .summary > ul > li.contributor::before {
+main .summary > ul > li.contributor::before {
   -webkit-mask: url(./svg/organization.svg) no-repeat 50% 50%;
   mask: url(./svg/organization.svg) no-repeat 50% 50%;
 }
 
-.code .summary > ul > li.license::before {
+main .summary > ul > li.license::before {
   -webkit-mask: url(./svg/law.svg) no-repeat 50% 50%;
   mask: url(./svg/law.svg) no-repeat 50% 50%;
 }
 
-.code .summary > ul > li > span {
+main .summary > ul > li > span {
   font-weight: 500;
   margin: 0 4px;
 }
 
-.code .summary .chart {
+main .summary .chart {
   height: 8px;
   display: flex;
 }
 
-.code .summary .chart > .html {
+main .summary .chart > .html {
   background: red;
   width: 80%;
 }
 
-.code .summary .chart > .css {
+main .summary .chart > .css {
   background: gold;
   width: 12%;
 }
 
-.code .summary .chart > .js {
+main .summary .chart > .js {
   background: purple;
   width: 8%;
 }
 
 /* CONTROLS */
 
-.code .controls {
+main .controls {
   margin-top: 16px;
   margin-bottom: 8px;
   display: flex;
   padding: 0;
 }
 
-.code .controls li {
+main .controls li {
   margin-left: 4px;
   margin-right: 4px;
 }
 
-.code .controls li:first-of-type {
+main .controls li:first-of-type {
   margin-left: 0;
 }
 
-.code .controls li:last-of-type {
+main .controls li:last-of-type {
   margin-right: 0;
 }
 
-.code .controls .file-controls {
+main .controls .file-controls {
   margin-left: auto;
   display: flex;
 }
 
-.code .controls .file-controls > *{
+main .controls .file-controls > * {
   border-radius: 0;
   margin-left: -1px;
   margin-right: -1px;
 }
 
-.code .controls .file-controls > :hover {
+main .controls .file-controls > :hover {
   z-index: 1;
 }
 
-.code .controls .file-controls > :first-child {
+main .controls .file-controls > :first-child {
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
   margin-left: 0;
 }
 
-.code .controls .file-controls > :last-child {
+main .controls .file-controls > :last-child {
   border-top-right-radius: 4px;
   border-bottom-right-radius: 4px;
   margin-right: 0;
 }
 
-.code .controls .clone {
-  background: linear-gradient(#00DD00, #00AA00);
+main .controls .clone {
+  background: linear-gradient(#00dd00, #00aa00);
   color: white;
   border: 1px solid #009900;
 }
 
-.code .controls .clone:hover {
-  background: linear-gradient(#00CC00, #00AA00);
+main .controls .clone:hover {
+  background: linear-gradient(#00cc00, #00aa00);
   border: 1px solid #008800;
 }
 
