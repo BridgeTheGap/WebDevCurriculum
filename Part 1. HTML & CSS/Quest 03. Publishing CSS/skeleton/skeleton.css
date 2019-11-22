@@ -54,6 +54,15 @@ nav ul,
   padding: 0;
 }
 
+.menu ul li > a {
+  display: flex;
+  align-items: center;
+}
+
+.menu ul li > a > * {
+  margin-right: 4px;
+}
+
 body > nav > *,
 nav ul li:not(:first-child):not(:last-child),
 .menu ul li:not(:first-child):not(:last-child) {
@@ -373,6 +382,10 @@ main .controls li:last-of-type {
   margin-right: 0;
 }
 
+main .controls .branch::before {
+  content: 'Branch:\00a0';
+}
+
 main .controls .file-controls {
   margin-left: auto;
   display: flex;
@@ -616,10 +629,6 @@ main .controls .clone:hover {
   align-items: center;
 }
 
-.btn-drop-down.clone::after {
-  background: white;
-}
-
 .btn-drop-down::after {
   content: '';
   width: 10px;
@@ -630,4 +639,8 @@ main .controls .clone:hover {
   mask: url('./svg/triangle-down.svg') no-repeat 50% 50%;
   -webkit-mask-size: 10px 10px;
   mask-size: 10px 10px;
+}
+
+.btn-drop-down.clone::after {
+  background: white;
 }
