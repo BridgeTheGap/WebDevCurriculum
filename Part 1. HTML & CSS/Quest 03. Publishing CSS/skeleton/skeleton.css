@@ -97,7 +97,7 @@ main {
   top: 10px;
 }
 
-main header {
+main > header {
   display: flex;
   background: #fafafa;
 }
@@ -262,6 +262,151 @@ main > nav > ul > .settings::before {
 
 .code > header button {
   margin-left: auto;
+}
+
+/* CODE SUMMARY */
+
+.code .summary {
+  height: 50px;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+}
+
+.code .summary > ul {
+  height: 42px;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  padding: 0;
+}
+
+.code .summary > ul > li {
+  display: flex;
+  grid-column: 1fr;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+}
+
+.code .summary > ul > li::before {
+  content: '';
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  margin-left: -16px;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  background-color: #666666;
+}
+
+.code .summary > ul > li.commit::before {
+  -webkit-mask: url(./svg/history.svg) no-repeat 50% 50%;
+  mask: url(./svg/history.svg) no-repeat 50% 50%;
+}
+
+.code .summary > ul > li.branch::before {
+  -webkit-mask: url(./svg/git-branch.svg) no-repeat 50% 50%;
+  mask: url(./svg/git-branch.svg) no-repeat 50% 50%;
+}
+
+.code .summary > ul > li.tag::before {
+  -webkit-mask: url(./svg/tag.svg) no-repeat 50% 50%;
+  mask: url(./svg/tag.svg) no-repeat 50% 50%;
+}
+
+.code .summary > ul > li.contributor::before {
+  -webkit-mask: url(./svg/organization.svg) no-repeat 50% 50%;
+  mask: url(./svg/organization.svg) no-repeat 50% 50%;
+}
+
+.code .summary > ul > li.license::before {
+  -webkit-mask: url(./svg/law.svg) no-repeat 50% 50%;
+  mask: url(./svg/law.svg) no-repeat 50% 50%;
+}
+
+.code .summary > ul > li > span {
+  font-weight: 500;
+  margin: 0 4px;
+}
+
+.code .summary .chart {
+  height: 8px;
+  display: flex;
+}
+
+.code .summary .chart > .html {
+  background: red;
+  width: 80%;
+}
+
+.code .summary .chart > .css {
+  background: gold;
+  width: 12%;
+}
+
+.code .summary .chart > .js {
+  background: purple;
+  width: 8%;
+}
+
+/* CONTROLS */
+
+.code .controls {
+  margin-top: 16px;
+  margin-bottom: 8px;
+  display: flex;
+  padding: 0;
+}
+
+.code .controls li {
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+.code .controls li:first-of-type {
+  margin-left: 0;
+}
+
+.code .controls li:last-of-type {
+  margin-right: 0;
+}
+
+.code .controls .file-controls {
+  margin-left: auto;
+  display: flex;
+}
+
+.code .controls .file-controls > *{
+  border-radius: 0;
+  margin-left: -1px;
+  margin-right: -1px;
+}
+
+.code .controls .file-controls > :hover {
+  z-index: 1;
+}
+
+.code .controls .file-controls > :first-child {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  margin-left: 0;
+}
+
+.code .controls .file-controls > :last-child {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  margin-right: 0;
+}
+
+.code .controls .clone {
+  background: linear-gradient(#00DD00, #00AA00);
+  color: white;
+  border: 1px solid #009900;
+}
+
+.code .controls .clone:hover {
+  background: linear-gradient(#00CC00, #00AA00);
+  border: 1px solid #008800;
 }
 
 /* GENERAL CLASS */

@@ -116,67 +116,58 @@
 				<h2>KnowRe web development curriculum for noobs</h2>
 				<button type="button" class="font-button dimen-button fill-button border-button">Edit</button>
 			</header>
-			<span id='repo-topic-list' />
-			<span id='btn-repo-topic' class='clickable link-text'>Manage topics</span>
-			</div>
 
-			<div class='bordered'>
-				<div>
-					<span id='btn-commit-all' class='clickable btn-code-overview'>
-						<img src='' alt='commit'>
-						<span class='code-overview-count-label' />
-						commits
-					</span>
+			<section class="summary">
+				<ul>
+					<li class="commit">
+						<span class="count">44</span>commits
+					</li>
 
-					<span id='btn-branch-all' class='clickable btn-code-overview'>
-						<img src='' alt='branch'>
-						<span class='code-overview-count-label' />
-						branches
-					</span>
+					<li class="branch">
+						<span class="count">1</span>branch
+					</li>
 
-					<span id='btn-tag-all' class='clickable btn-code-overview'>
-						<img src='' alt='tag'>
-						<span class='code-overview-count-label' />
-						releases
-					</span>
+					<li class="tag">
+						<span class="count">0</span>releases
+					</li>
 
-					<span id='btn-contributor-all' class='clickable btn-code-overview'>
-						<img src='' alt='contributors'>
-						<span class='code-overview-count-label' />
-						contributors
-					</span>
+					<li class="contributor">
+						<span class="count">2</span>contributors
+					</li>
 
-					<span id='btn-license' class='clickable btn-code-overview'>
-						<img src='' alt='license'>
-						MIT
-					</span>
+					<li class="license">MIT</li>
+				</ul>
+				<div class="chart">
+					<div class="html"></div>
+					<div class="css"></div>
+					<div class="js"></div>
 				</div>
-				<div id='code-overview-chart' />
-			</div>
+			</section>
 
-			<div id='code-controls'>
-				<div id='code-controls-left'>
-					<span id='btn-select-branch' class='clickable btn-standard'>
-						Branch:
-						<span id='branch-name-label' class='bold' />
-						<img src='' alt='chevron-down'>
-					</span>
+			<ul class="controls">
+				<li class="branch drop-down font-button dimen-button fill-button border-button">
+					master
+				</li>
 
-					<span id='btn-new-pr' class='clickable btn-standard bold'>New pull request</span>
-				</div>
-				<div id='code-controls-right'>
-					<span class='btn-container'>
-						<span id='btn-new-file' class='clickable btn-standard bold'>Create new file</span>
-						<span id='btn-upload-file' class='clickable btn-standard bold'>Upload files</span>
-						<span id='btn-find-file' class='clickable btn-standard bold'>Find file</span>
-					</span>
+				<li class="pull-request font-button dimen-button fill-button border-button">
+					New pull request
+				</li>
 
-					<span id='btn-clone' class='clickable bold'>
-						Clone or download
-						<img src='' alt='chevron-down'>
-					</span>
-				</div>
-			</div>
+				<li class="file-controls">
+					<div class="font-button dimen-button fill-button border-button">Create new file</div>
+					<div class="font-button dimen-button fill-button border-button">Upload files</div>
+					<div class="font-button dimen-button fill-button border-button">Find file</div>
+				</li>
+
+				<li class="clone font-button dimen-button drop-down fill-button border-button">
+					Clone or download
+				</li>
+
+				<aside class="branch-list">
+				</aside>
+				<aside class="clone-info">
+				</aside>
+			</ul>
 
 			<div id='container-file-list' class='container'>
 				<span id='file-list-header'>
