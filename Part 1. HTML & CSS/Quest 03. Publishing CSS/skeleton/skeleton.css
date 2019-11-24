@@ -28,6 +28,19 @@ body > nav {
   height: 60px;
 }
 
+body > nav > input {
+  background: #3F4448;
+  border: 1px solid black;
+  height: 24px;
+  font-size: 0.86rem;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+body > nav > input::placeholder {
+  color: #888888;
+}
+
 body > nav a,
 body > nav a:visited {
   color: lightgray;
