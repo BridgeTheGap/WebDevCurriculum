@@ -143,7 +143,7 @@ main {
   color: rgb(0, 119, 255);
 }
 
-.overview > header a:hover {
+.overview > header > h1 > a:hover {
   text-decoration: underline;
 }
 
@@ -549,7 +549,7 @@ main .controls .clone:hover {
 
 /* GENERAL CLASS */
 
-.content {
+.padded {
   padding-left: calc(100% - 1400px);
   padding-right: calc(100% - 1400px);
 }
