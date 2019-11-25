@@ -103,22 +103,11 @@ body > nav a.logo:hover {
   margin-right: 6px;
 }
 
-body > nav > *:not(:first-child):not(:last-child),
-body > nav ul li:not(:first-child):not(:last-child),
-.menu ul li:not(:first-child):not(:last-child) {
-  margin: auto 6px;
-}
-
-body > nav > *:first-child,
-body > nav ul li:first-child {
-  margin-right: 6px;
-}
-
 nav ul li:last-child {
   margin-left: 6px;
 }
 
-nav .menu {
+nav.std-spacing .menu {
   margin-left: auto;
 }
 
@@ -212,17 +201,6 @@ main {
 
 .overview aside ul > li {
   display: flex;
-}
-
-.overview aside ul > li:not(:first-child):not(:last-child) {
-  margin: auto 4px;
-}
-
-.overview aside ul > li:first-child {
-  margin-right: 4px;
-}
-.overview aside ul > li:last-child {
-  margin-left: 4px;
 }
 
 .overview aside .action-count > a:hover {
@@ -466,25 +444,12 @@ main .controls {
   padding: 0;
 }
 
-main .controls li {
-  margin-left: 4px;
-  margin-right: 4px;
-}
-
-main .controls li:first-of-type {
-  margin-left: 0;
-}
-
-main .controls li:last-of-type {
-  margin-right: 0;
-}
-
 main .controls .branch::before {
   content: 'Branch:\00a0';
   font-weight: initial;
 }
 
-main .controls .file-controls {
+main .controls.std-spacing > .file-controls {
   margin-left: auto;
   display: flex;
 }
@@ -698,13 +663,13 @@ body > footer a {
   color: rgb(0, 106, 226);
 }
 
-body > footer > .logo {
+body > footer.std-spacing ul.std-spacing ~ .logo {
   margin-left: auto;
   margin-right: auto;
   fill: lightgray;
 }
 
-body > footer > .logo:hover {
+body > footer.std-spacing ul.std-spacing ~ .logo:hover {
   fill: gray;
 }
 
@@ -776,7 +741,7 @@ body > footer > .logo:hover {
   border: 1px solid #aaaaaa;
 }
 
-.std-spacing > :not(:first-child):not(:last-child):not(.logo),
+.std-spacing > :not(:first-child):not(:last-child),
 .std-spacing > .std-spacing {
   margin: auto 6px;
 }
