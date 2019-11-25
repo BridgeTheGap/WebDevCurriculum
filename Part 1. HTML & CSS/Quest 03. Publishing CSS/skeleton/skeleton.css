@@ -19,6 +19,10 @@ a {
   text-decoration: none;
 }
 
+a:hover {
+  text-decoration: underline;
+}
+
 nav ul,
 .menu ul {
   display: flex;
@@ -44,7 +48,7 @@ body > nav > .flex-container {
 }
 
 body > nav > .flex-container > * {
-  font-size: 0.86rem;
+  font-size: 14px;
 }
 
 body > nav > .flex-container > *:first-child {
@@ -71,13 +75,14 @@ body > nav > .flex-container > input::placeholder {
 
 body > nav a,
 body > nav a:visited {
-  font-size: 0.86rem;
+  font-size: 14px;
   font-weight: 600;
   color: lightgray;
 }
 
 body > nav a:hover {
   color: gray;
+  text-decoration: none;
 }
 
 body > nav a.logo {
@@ -177,10 +182,6 @@ main {
   color: rgb(0, 106, 226);
 }
 
-.overview > header > h1 > a:hover {
-  text-decoration: underline;
-}
-
 /* REPO ACCESSORY CONTROLS */
 
 .overview > header aside {
@@ -215,7 +216,7 @@ main {
 
 .overview > nav {
   height: 38px;
-  font-size: 0.86rem;
+  font-size: 14px;
 }
 
 .overview > nav > ul {
@@ -256,7 +257,7 @@ main {
   border-radius: 10px;
   margin-left: 4px;
   text-align: center;
-  font-size: 0.75rem;
+  font-size: 12px;
   font-weight: 600;
   line-height: 16px;
   color: #666666;
@@ -342,7 +343,7 @@ main .summary {
   height: 50px;
   border: 1px solid #d0d0d0;
   border-radius: 4px;
-  font-size: 0.86rem;
+  font-size: 14px;
 }
 
 main .summary > ul {
@@ -503,7 +504,7 @@ main .controls .clone:hover {
   height: 40px;
   display: flex;
   align-items: center;
-  font-size: 0.78rem;
+  font-size: 14px;
   padding-left: 8px;
   padding-right: 8px;
   position: relative;
@@ -534,7 +535,6 @@ main .controls .clone:hover {
 .dir-content .last-commit a {
   text-decoration: none;
   font-family: monospace;
-  font-size: 1rem;
   color: #444444;
 }
 
@@ -550,7 +550,7 @@ main .controls .clone:hover {
   margin-top: -1px;
   height: 34px;
   border: 1px solid #e0e0e0;
-  font-size: 0.9rem;
+  font-size: 14px;
 }
 
 .dir-content .file-list > .item > * {
@@ -618,7 +618,7 @@ main .controls .clone:hover {
   border-bottom: 1px solid #e0e0e0;
   background: #f6f8fa;
   font-weight: 600;
-  font-size: 0.86rem;
+  font-size: 14px;
   display: flex;
   align-items: center;
 }
@@ -656,6 +656,10 @@ body > footer > ul {
 body > footer > ul {
   padding: 0;
   list-style: none;
+}
+
+body > footer a {
+  color: rgb(0, 106, 226);
 }
 
 body > footer > .logo {
