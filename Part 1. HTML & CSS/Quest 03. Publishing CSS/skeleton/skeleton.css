@@ -214,7 +214,8 @@ main {
 /* MAIN NAV */
 
 .overview > nav {
-  height: 44px;
+  height: 38px;
+  font-size: 0.86rem;
 }
 
 .overview > nav > ul {
@@ -240,17 +241,24 @@ main {
 
 .overview > nav > ul > li.selected {
   background: white;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+  border-top: 3px solid #E16220;
+  border-left: 1px solid lightgray;
+  border-right: 1px solid lightgray;
+  border-bottom: 1px solid white;
 }
 
 .overview > nav > ul > li > .badge {
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
   background: lightgray;
   border-radius: 10px;
   margin-left: 4px;
   text-align: center;
-  font-size: 0.9em;
-  line-height: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 16px;
   color: #666666;
 }
 
