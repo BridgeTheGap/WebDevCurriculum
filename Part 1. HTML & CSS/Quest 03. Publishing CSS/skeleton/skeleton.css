@@ -9,7 +9,8 @@ html {
 body {
   /* TODO: 어떤 코드가 들어가야 할까요? */
   margin: 0 auto;
-  font-family: sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial,
+    sans-serif, Apple Color Emoji, Segoe UI Emoji;
 }
 
 /* TODO: 또 어떤 코드들이 들어가야 할까요? */
@@ -49,12 +50,20 @@ body > nav > .flex-container > input {
   padding-bottom: 0;
 }
 
+body > nav > .flex-container > input:active, 
+body > nav > .flex-container > input:focus {
+  background: white;
+  outline: none;
+}
+
 body > nav > .flex-container > input::placeholder {
   color: #888888;
 }
 
 body > nav a,
 body > nav a:visited {
+  font-size: 0.86rem;
+  font-weight: 600;
   color: lightgray;
 }
 
