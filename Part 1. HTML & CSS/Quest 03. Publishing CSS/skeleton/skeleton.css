@@ -243,7 +243,7 @@ main {
   background: white;
   border-top-right-radius: 3px;
   border-top-left-radius: 3px;
-  border-top: 3px solid #E16220;
+  border-top: 3px solid #e16220;
   border-left: 1px solid lightgray;
   border-right: 1px solid lightgray;
   border-bottom: 1px solid white;
@@ -503,7 +503,7 @@ main .controls .clone:hover {
   height: 40px;
   display: flex;
   align-items: center;
-  font-size: 0.85rem;
+  font-size: 0.78rem;
   padding-left: 8px;
   padding-right: 8px;
   position: relative;
@@ -511,12 +511,14 @@ main .controls .clone:hover {
 }
 
 .dir-content .last-commit img {
-  width: 22 px;
+  width: 22px;
   height: 22px;
+  border-radius: 2px;
 }
 
 .dir-content .last-commit .username {
-  font-weight: 500;
+  font-weight: 600;
+  margin: 0 4px;
 }
 
 .dir-content .last-commit .commit-msg {
@@ -525,6 +527,7 @@ main .controls .clone:hover {
 
 .dir-content .last-commit .commit-info {
   margin-left: auto;
+  font-size: 0.82rem;
   color: gray;
 }
 
@@ -532,7 +535,7 @@ main .controls .clone:hover {
   text-decoration: none;
   font-family: monospace;
   font-size: 1rem;
-  color: #666666;
+  color: #444444;
 }
 
 .dir-content .last-commit a:hover {
@@ -547,11 +550,47 @@ main .controls .clone:hover {
   margin-top: -1px;
   height: 34px;
   border: 1px solid #e0e0e0;
+  font-size: 0.9rem;
 }
 
 .dir-content .file-list > .item > * {
   display: flex;
   align-items: center;
+  color: #666666;
+}
+
+.dir-content .file-list > .item > a.path,
+.dir-content .file-list > .item > a.path:visited {
+  color: rgb(0, 106, 226);
+}
+
+.dir-content .file-list > .item > a.path:hover {
+  text-decoration: underline;
+}
+
+.dir-content .file-list > .item > a.path > .empty-dir,
+.dir-content .file-list > .item > a.path > .empty-dir:visited {
+  color: #666666;
+}
+
+.dir-content .file-list > .item > .path::before {
+  content: '';
+  width: 16px;
+  height: 16px;
+  margin-right: 2px;
+  background: rgb(104, 142, 173);
+  -webkit-mask-size: 16px 16px;
+  mask-size: 16px 16px;
+}
+
+.dir-content .file-list > .item.dir > .path::before {
+  -webkit-mask: url('./svg/file-directory.svg') no-repeat 50% 50%;
+  mask: url('./svg/file-directory.svg') no-repeat 50% 50%;
+}
+
+.dir-content .file-list > .item.file > .path::before {
+  -webkit-mask: url('./svg/file.svg') no-repeat 50% 50%;
+  mask: url('./svg/file.svg') no-repeat 50% 50%;
 }
 
 .dir-content .file-list > .item > *:last-child {
@@ -573,11 +612,13 @@ main .controls .clone:hover {
   border: 1px solid #e0e0e0;
   border-radius: 4px;
 }
+
 .file-info {
   padding: 8px;
   border-bottom: 1px solid #e0e0e0;
   background: #f6f8fa;
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 0.86rem;
   display: flex;
   align-items: center;
 }
@@ -597,6 +638,10 @@ main .controls .clone:hover {
 
 .file-content .content {
   padding: 40px;
+}
+
+.file-content .content > h1 {
+  text-decoration: underline #dddddd;
 }
 
 /* GENERAL CLASS */
