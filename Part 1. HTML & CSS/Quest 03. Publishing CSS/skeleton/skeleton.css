@@ -644,6 +644,25 @@ main .controls .clone:hover {
   text-decoration: underline #dddddd;
 }
 
+/* FOOTER */
+
+body > footer,
+body > footer > ul {
+  display: flex;
+  align-items: center;
+  font-size: 0.72rem;
+}
+
+body > footer > ul {
+  padding: 0;
+  list-style: none;
+}
+
+body > footer > .logo {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* GENERAL CLASS */
 
 .padded {
@@ -710,6 +729,19 @@ main .controls .clone:hover {
 
 .border-button:hover {
   border: 1px solid #aaaaaa;
+}
+
+.std-spacing > :not(:first-child):not(:last-child):not(.logo),
+.std-spacing > .std-spacing {
+  margin: auto 6px;
+}
+
+.std-spacing > :first-child {
+  margin-right: 6px;
+}
+
+.std-spacing > :last-child {
+  margin-left: 6px;
 }
 
 /* ACTION COUNT */
