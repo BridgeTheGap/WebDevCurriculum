@@ -661,6 +661,10 @@ main .controls .clone:hover {
 
 /* FOOTER */
 
+body > footer {
+  margin-top: 40px;
+}
+
 body > footer,
 body > footer > ul {
   display: flex;
