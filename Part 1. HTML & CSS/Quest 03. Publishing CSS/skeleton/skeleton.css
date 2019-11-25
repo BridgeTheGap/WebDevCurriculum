@@ -448,6 +448,7 @@ main .controls li:last-of-type {
 
 main .controls .branch::before {
   content: 'Branch:\00a0';
+  font-weight: initial;
 }
 
 main .controls .file-controls {
@@ -640,12 +641,12 @@ main .controls .clone:hover {
 
 .font-button {
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .dimen-button {
   display: inline-block;
-  padding: 5px 9px;
+  padding: 6px 9px;
 }
 
 .fill-button {
