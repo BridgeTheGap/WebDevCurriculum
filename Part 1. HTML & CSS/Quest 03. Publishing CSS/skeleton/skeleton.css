@@ -44,7 +44,7 @@ body > nav {
 body > nav > .flex-container {
   background: black;
   height: 28px;
-  width: 25%;
+  width: 30%;
 }
 
 body > nav > .flex-container > * {
@@ -372,8 +372,10 @@ main .summary > ul > li a {
   height: 100%;
 }
 
-main .summary > ul > li > a:hover {
+main .summary > ul > li > a:hover,
+main .summary > ul > li > a:hover > span {
   text-decoration: unset;
+  color: rgb(0, 106, 226);
 }
 
 main .summary > ul > li > ::before {
@@ -678,6 +680,11 @@ body > footer a {
 body > footer > .logo {
   margin-left: auto;
   margin-right: auto;
+  fill: lightgray;
+}
+
+body > footer > .logo:hover {
+  fill: gray;
 }
 
 /* GENERAL CLASS */
