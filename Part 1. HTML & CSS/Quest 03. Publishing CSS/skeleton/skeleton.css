@@ -19,6 +19,14 @@ a {
   text-decoration: none;
 }
 
+nav ul,
+.menu ul {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+}
+
 /* TOP NAVIGATION */
 
 body > nav {
@@ -46,11 +54,12 @@ body > nav > .flex-container > *:first-child {
 
 body > nav > .flex-container > input {
   background: #3f4448;
+  flex: 1;
   padding-top: 0;
   padding-bottom: 0;
 }
 
-body > nav > .flex-container > input:active, 
+body > nav > .flex-container > input:active,
 body > nav > .flex-container > input:focus {
   background: white;
   outline: none;
@@ -80,39 +89,28 @@ body > nav a.logo:hover {
   fill: gray;
 }
 
-nav ul,
-.menu ul {
-  display: flex;
-  align-items: center;
-  list-style: none;
-  padding: 0;
-}
-
 .menu ul li > a {
   display: flex;
   align-items: center;
 }
 
 .menu ul li > a > * {
-  margin-right: 4px;
+  margin-right: 6px;
 }
 
-body > nav > *,
-nav ul li:not(:first-child):not(:last-child),
+body > nav > *:not(:first-child):not(:last-child),
+body > nav ul li:not(:first-child):not(:last-child),
 .menu ul li:not(:first-child):not(:last-child) {
-  margin: auto 8px;
+  margin: auto 6px;
 }
 
+body > nav > *:first-child,
 nav ul li:first-child {
-  margin: 0 8px 0 0;
+  margin-right: 6px;
 }
 
 nav ul li:last-child {
-  margin: 0 0 0 8px;
-}
-
-nav > input {
-  width: 25%;
+  margin-left: 6px;
 }
 
 nav .menu {
@@ -131,12 +129,12 @@ nav .menu {
   display: inline-block;
   width: 20px;
   height: 20px;
+  border-radius: 2px;
 }
 
 /* MAIN HEADER */
 
 main {
-  margin: 0 auto;
   top: 10px;
 }
 
@@ -147,13 +145,28 @@ main {
 
 .overview > header {
   display: flex;
+  align-items: baseline;
+  margin-top: 8px;
 }
 
 .overview > header h1 {
-  font-size: x-large;
-  background: no-repeat url(./svg/repo.svg) left 0% top 25%;
-  background-size: auto 20px;
-  padding-left: 20px;
+  font-size: large;
+}
+
+.overview > header h1::before {
+  display: inline-block;
+  content: '';
+  width: 16px;
+  height: 16px;
+  background: gray;
+  -webkit-mask: url('./svg/repo.svg') no-repeat 50% 50%;
+  mask: url('./svg/repo.svg') no-repeat 50% 50%;
+  -webkit-mask-size: 16px 16px;
+  mask-size: 16px 16px;
+}
+
+.overview > header h1 {
+  font-weight: 600;
 }
 
 .overview > header h1 .user-id {
@@ -161,7 +174,7 @@ main {
 }
 
 .overview > header a {
-  color: rgb(0, 119, 255);
+  color: rgb(0, 106, 226);
 }
 
 .overview > header > h1 > a:hover {
@@ -202,7 +215,6 @@ main {
 
 .overview > nav {
   height: 44px;
-  padding-top: 10px;
 }
 
 .overview > nav > ul {
