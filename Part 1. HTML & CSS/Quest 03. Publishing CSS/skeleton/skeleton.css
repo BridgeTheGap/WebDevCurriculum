@@ -363,7 +363,20 @@ main .summary > ul > li {
   color: #666666;
 }
 
-main .summary > ul > li::before {
+main .summary > ul > li a {
+  color: unset;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+main .summary > ul > li > a:hover {
+  text-decoration: unset;
+}
+
+main .summary > ul > li > ::before {
   content: '';
   width: 16px;
   height: 16px;
@@ -374,32 +387,32 @@ main .summary > ul > li::before {
   background-color: #666666;
 }
 
-main .summary > ul > li.commit::before {
+main .summary > ul > li.commit > ::before {
   -webkit-mask: url(./svg/history.svg) no-repeat 50% 50%;
   mask: url(./svg/history.svg) no-repeat 50% 50%;
 }
 
-main .summary > ul > li.branch::before {
+main .summary > ul > li.branch > ::before {
   -webkit-mask: url(./svg/git-branch.svg) no-repeat 50% 50%;
   mask: url(./svg/git-branch.svg) no-repeat 50% 50%;
 }
 
-main .summary > ul > li.tag::before {
+main .summary > ul > li.tag > ::before {
   -webkit-mask: url(./svg/tag.svg) no-repeat 50% 50%;
   mask: url(./svg/tag.svg) no-repeat 50% 50%;
 }
 
-main .summary > ul > li.contributor::before {
+main .summary > ul > li.contributor > ::before {
   -webkit-mask: url(./svg/organization.svg) no-repeat 50% 50%;
   mask: url(./svg/organization.svg) no-repeat 50% 50%;
 }
 
-main .summary > ul > li.license::before {
+main .summary > ul > li.license > ::before {
   -webkit-mask: url(./svg/law.svg) no-repeat 50% 50%;
   mask: url(./svg/law.svg) no-repeat 50% 50%;
 }
 
-main .summary > ul > li > span {
+main .summary > ul > li .count {
   font-weight: 500;
   margin: 0 4px;
   color: black;
