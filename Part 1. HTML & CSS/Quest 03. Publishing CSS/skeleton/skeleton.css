@@ -320,9 +320,16 @@ main {
 }
 
 /* CODE */
+
 main > header {
   display: flex;
   align-items: center;
+  padding: 12px 0;
+}
+
+main > header h2 {
+  font-weight: unset;
+  font-size: unset;
 }
 
 main > header button {
@@ -335,6 +342,7 @@ main .summary {
   height: 50px;
   border: 1px solid #d0d0d0;
   border-radius: 4px;
+  font-size: 0.86rem;
 }
 
 main .summary > ul {
@@ -351,6 +359,7 @@ main .summary > ul > li {
   align-items: center;
   justify-content: center;
   list-style: none;
+  color: #666666;
 }
 
 main .summary > ul > li::before {
@@ -392,6 +401,7 @@ main .summary > ul > li.license::before {
 main .summary > ul > li > span {
   font-weight: 500;
   margin: 0 4px;
+  color: black;
 }
 
 main .summary .chart {
