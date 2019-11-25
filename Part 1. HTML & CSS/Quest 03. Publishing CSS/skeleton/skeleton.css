@@ -137,6 +137,23 @@ nav .menu {
   border-radius: 2px;
 }
 
+.menu > ul > li.notifications {
+  position: relative;
+}
+
+.menu > ul > li.notifications.enabled::after {
+  content: '';
+  display: block;
+  width: 10px;
+  height: 10px;
+  background: rgb(0, 106, 226);
+  border-radius: 10px;
+  border: 2px solid black;
+  position: absolute;
+  top: -8px;
+  right: 0px;
+}
+
 /* MAIN HEADER */
 
 main {
