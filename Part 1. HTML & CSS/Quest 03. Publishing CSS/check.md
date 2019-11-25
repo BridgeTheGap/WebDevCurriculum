@@ -26,3 +26,10 @@
        /* something */
      }
      ```
+
+### Further Reading
+- 웹폰트 관련:
+  - "web font loading strategies"
+  - https://github.com/Knowre-Dev/recruiting/blob/master/script/video-web-client.md
+  - https://www.zachleat.com/web/comprehensive-webfonts/
+  - https://github.com/zachleat/web-font-loading-recipes 등.
