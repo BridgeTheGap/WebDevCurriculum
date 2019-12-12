@@ -16,8 +16,8 @@ export default class DesktopPresenter extends DirectoryPresenter {
    * @param {FileViewData[]} content 디렉토리 내의 파일들. `dir.content`에 대응.
    */
   displayDirectory(dir, content) {
-    const view = createDirectoryItem(dir);
-
+    const view = createDirectoryWindow(dir);
+    // TODO: onClose 연결은 어떻게?
     const presenter = new DirectoryPresenter(null, view);
     presenter.onClose = (p, e) => { this.onClose(p, e); };
     presenter.onOpenItem = (p, e, d) => { this.onOpenItem(p, e, d); };
@@ -35,15 +35,43 @@ export default class DesktopPresenter extends DirectoryPresenter {
 /**
  * @param {QDirectory} dir 생성할 뷰의 디렉토리.
  */
-function createDirectoryItem(dir) {
+function createDirectoryWindow(dir) {
   const origin = getNewWindowOrigin();
   const view = document.createElement('div');
   view.className = 'window';
   view.style.left = `${origin}px`;
   view.style.top = `${origin}px`;
-  // TODO: 헤더 넣기 - dir 이름, 닫기 버튼도 넣고 좀 꾸며보자.
+  view.appendChild(createDirectoryTitleBar(dir.name));
   // TODO: 헤더 드래그 가능.
   return view;
+}
+
+function createDirectoryTitleBar(name) {
+  const view = document.createElement('div');
+  view.className = 'title-bar';
+  view.appendChild(createNameLabel(name));
+  view.appendChild(createWindowButtonSet());
+
+  return view;
+}
+
+function createNameLabel(name) {
+  const nameLabel = document.createElement('div');
+  nameLabel.className = 'name';
+  nameLabel.textContent = name;
+  return nameLabel;
+}
+
+function createWindowButtonSet() {
+  const closeButton = document.createElement('i');
+  closeButton.className = 'material-icons control-button close';
+  closeButton.textContent = 'close';
+
+  const controls = document.createElement('div');
+  controls.className = 'control'
+  controls.appendChild(closeButton);
+
+  return controls;
 }
 
 // TODO: 따로 창 관리 클래스로 리팩토링
