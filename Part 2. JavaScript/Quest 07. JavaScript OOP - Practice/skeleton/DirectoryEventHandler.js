@@ -14,20 +14,20 @@ export default class DirectoryEventHandler {
 
     const location = new DOMPoint(event.clientX, event.clientY);
 
-    for (let icon of this.view.querySelectorAll('.icon')) {
-      const frame = icon.getBoundingClientRect();
+    for (let item of this.view.querySelectorAll('.desktop-item')) {
+      const frame = item.getBoundingClientRect();
       const isClickInIcon = frame.containsPoint(location);
 
       if (!isClickInIcon) continue;
 
-      this.mouseDownElement = icon;
+      this.mouseDownElement = item;
       // FIXME: 뭔가 잘 안 맞고 있다.
       this.cursorOffset = new DOMPoint(location.x - frame.x, location.y - frame.y);
 
       break;
     }
 
-    if (!this.mouseDownElement) { deselectAll.call(this); };
+    if (!this.mouseDownElement) { deselectAll.call(this, '.desktop-item'); };
   }
 
   onMouseUp(event) {

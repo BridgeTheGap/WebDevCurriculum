@@ -7,26 +7,42 @@
   position: absolute;
 }
 
-.desktop-item { 
+.desktop-item {
+  position: absolute;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.icon.icon {
-  display: flex;
-  font-size: 48px;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
   width: 60px;
-  height: 60px;
-  color: salmon;
+  height: 80px;
   cursor: pointer;
   box-sizing: border-box;
 }
 
-.icon.selected {
+.desktop-item .icon {
+  display: flex;
+  font-size: 48px;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  color: salmon;
+  margin: 0px;
+}
+
+.desktop-item.selected {
   border: 2px solid blue;
   background-color: rgba(0, 0, 255, 0.1);
+}
+
+.desktop-item.selected .icon {
+  margin-top: -2px;
+}
+
+.label { 
+  font-size: 12px;
+  font-family: sans-serif;
+}
+
+.desktop-item.selected .label {
+  margin-bottom: -2px;
 }

@@ -1,14 +1,17 @@
 /**
  * 디렉토리 내의 파일 위치를 계산하는 class.
  */
+// TODO: FileAlignment -> ItemAlignment로 이름 변경
 export default class AbstractFileAlignment {
   /**
-   * @param {number} itemSize 아이콘의 크기.
+   * @param {number} width 아이콘의 넓이.
+   * @param {number} height 아이콘의 높이.
    * @param {number} itemSpacing 정렬 방향 기준 같은 줄의 아이템 간격.
    * @param {number} lineSpacing 정렬 방향 기준 줄 간의 간격.
    */
-  constructor(itemSize, itemSpacing, lineSpacing) {
-    this.itemSize = itemSize;
+  constructor(width, height, itemSpacing, lineSpacing) {
+    this.width = width;
+    this.height = height;
     this.itemSpacing = itemSpacing;
     this.lineSpacing = lineSpacing;
   }

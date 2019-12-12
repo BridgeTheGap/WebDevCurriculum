@@ -23,11 +23,12 @@ export default class DirectoryPresenter {
    */
   displayList(list) {
     list.forEach((file, i) => {
+      // TODO: 추후 rect가 필요 없을 경우 getOrigin으로 바꾸기.
       const rect = this.alignment.getRect(i, this.view.style.width);
-      const icon = createIcon(file, rect);
-      icon.addEventListener('mousedown', (e) => selectOne.call(this, e));
-      icon.addEventListener('dblclick', (e) => { this.onOpenItem(this, e, file) });
-      this.view.appendChild(icon);
+      const item = createItem(file, rect.origin);
+      item.addEventListener('mousedown', () => selectOne.call(this, '.desktop-item', item));
+      item.addEventListener('dblclick', (e) => { this.onOpenItem(this, e, file) });
+      this.view.appendChild(item);
     })
   }
 
@@ -50,14 +51,32 @@ DirectoryPresenter.prototype.onOpenItem = (presenter, event, data) => { };
 
 /**
  * @param {FileViewData} file 아이콘을 생성할 파일 데이터.
- * @param {Rect} rect 아이콘 rect.
  */
-function createIcon(file, rect) {
+function createIcon(file) {
   const icon = document.createElement('i');
   icon.classList.add('material-icons');
   icon.classList.add('icon');
-  icon.style.left = `${rect.origin.x}px`;
-  icon.style.top = `${rect.origin.y}px`;
   icon.textContent = file.icon;
   return icon
+}
+
+/**
+ * @param {FileViewData} data 데스크탑 아이템을 생성할 파일 데이터.
+ * @param {Point} origin 
+ */
+function createItem(data, origin) {
+  const item = document.createElement('div');
+  item.classList.add('desktop-item');
+  item.style.left = `${origin.x}px`;
+  item.style.top = `${origin.y}px`;
+  item.appendChild(createIcon(data));
+  item.appendChild(createLabel(data.file.name));
+  return item;
+}
+
+function createLabel(name) {
+  const label = document.createElement('div');
+  label.classList.add('label');
+  label.textContent = name;
+  return label;
 }
