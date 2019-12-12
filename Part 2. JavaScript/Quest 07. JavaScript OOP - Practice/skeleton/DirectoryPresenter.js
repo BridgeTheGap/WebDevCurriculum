@@ -1,15 +1,14 @@
-import FileAlignment from './viewmodel/HorizontalFileAlignment.js';
-import { Rect } from './lib/dimen.js';
+import ItemAlignment from './viewmodel/HorizontalItemAlignment.js/index.js';
 import DirectoryEventHandler from './DirectoryEventHandler.js';
 import { selectOne } from './lib/viewExt.js';
 
 export default class DirectoryPresenter {
   /**
-   * @param {AbstractFileAlignment} [alignment] 파일 정렬 방식. 기본값: `HorizontalFileAlignment`.
+   * @param {AbstractItemAlignment} [alignment] 파일 정렬 방식. 기본값: `HorizontalItemAlignment`.
    * @param {HTMLElement} view 파일들을 보여줄 창.
    */
   constructor(alignment, view) {
-    this.alignment = alignment || new FileAlignment();
+    this.alignment = alignment || new ItemAlignment();
     this.view = view;
     this.handler = new DirectoryEventHandler(view);
 

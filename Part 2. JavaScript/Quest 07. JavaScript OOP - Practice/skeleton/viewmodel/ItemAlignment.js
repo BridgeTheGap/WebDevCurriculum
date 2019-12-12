@@ -1,8 +1,7 @@
 /**
  * 디렉토리 내의 파일 위치를 계산하는 class.
  */
-// TODO: FileAlignment -> ItemAlignment로 이름 변경
-export default class AbstractFileAlignment {
+export default class AbstractItemAlignment {
   /**
    * @param {number} width 아이콘의 넓이.
    * @param {number} height 아이콘의 높이.

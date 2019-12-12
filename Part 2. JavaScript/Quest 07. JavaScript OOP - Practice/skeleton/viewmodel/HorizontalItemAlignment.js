@@ -1,10 +1,10 @@
-import FileAlignment from './FileAlignment.js';
+import ItemAlignment from './ItemAlignment.js';
 import { Point, Size, Rect } from '../lib/dimen.js';
 
 /**
  * 좌상단부터 좌->우로 파일을 정렬.
  */
-export default class HorizontalFileAlignment extends FileAlignment {
+export default class HorizontalItemAlignment extends ItemAlignment {
   constructor(width = 60, height = 80, itemSpacing = 10, lineSpacing = 20) {
     super(width, height, itemSpacing, lineSpacing);
   }
