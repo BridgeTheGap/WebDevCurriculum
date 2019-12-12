@@ -1,4 +1,4 @@
-import ItemAlignment from './viewmodel/HorizontalItemAlignment.js/index.js';
+import ItemAlignment from './viewmodel/HorizontalItemAlignment.js';
 import DirectoryEventHandler from './DirectoryEventHandler.js';
 import { selectOne } from './lib/viewExt.js';
 
