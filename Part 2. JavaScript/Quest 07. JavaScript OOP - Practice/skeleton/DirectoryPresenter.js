@@ -1,4 +1,5 @@
 import FileAlignment from './viewmodel/HorizontalFileAlignment.js';
+import { Rect } from './lib/dimen.js';
 
 export default class DirectoryPresenter {
   /**
@@ -14,16 +15,10 @@ export default class DirectoryPresenter {
    * @param {FileViewData[]} list 디렉토리 안의 파일 목록.
    */
   displayList(list) {
-    console.log(`display ${list}`);
-    list.forEach((x, i) => {
+    list.forEach((file, i) => {
       const rect = this.alignment.getRect(i, this.view.style.width);
-      console.log(rect);
-      const icon = document.createElement('i');
-      icon.classList.add('material-icons');
-      icon.classList.add('icon');
-      icon.style.left = `${rect.origin.x}px`;
-      icon.style.top = `${rect.origin.y}px`;
-      icon.textContent = x.icon;
+      const icon = createIcon(file, rect);
+      icon.addEventListener('click', (e) => selectOne(e, this.view));
       this.view.appendChild(icon);
     })
   }
@@ -44,3 +39,42 @@ DirectoryPresenter.prototype.onClose = (presenter, event) => { };
  * @param {FileViewData} 선택된 파일.
  */
 DirectoryPresenter.prototype.onOpenItem = (presenter, event, data) => { };
+
+/**
+ * @param {FileViewData} file 아이콘을 생성할 파일 데이터.
+ * @param {Rect} rect 아이콘 rect.
+ */
+function createIcon(file, rect) {
+  const icon = document.createElement('i');
+  icon.classList.add('material-icons');
+  icon.classList.add('icon');
+  icon.style.left = `${rect.origin.x}px`;
+  icon.style.top = `${rect.origin.y}px`;
+  icon.textContent = file.icon;
+  return icon
+}
+
+function selectOne(event, view) {
+  event.stopPropagation();
+  view.querySelectorAll('.icon').forEach((element) => {
+    if (element === event.target) {
+      toggleSelection(event);
+    } else {
+      element.classList.remove('selected');
+    }
+  });
+}
+
+function toggleSelection(event) {
+  toggleClassAttribute(event.target.classList, 'selected');
+}
+
+// TODO: move to library
+
+function toggleClassAttribute(classList, value) {
+  if (classList.contains(value)) {
+    classList.remove(value);
+  } else {
+    classList.add(value);
+  }
+}

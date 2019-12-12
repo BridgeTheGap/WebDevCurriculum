@@ -17,4 +17,9 @@
   height: 60px;
   color: salmon;
   cursor: pointer;
+  box-sizing: border-box;
+}
+
+.icon.selected {
+  border: 2px solid blue;
 }

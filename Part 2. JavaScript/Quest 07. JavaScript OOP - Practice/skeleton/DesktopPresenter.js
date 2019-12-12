@@ -6,6 +6,10 @@ export default class DesktopPresenter extends DirectoryPresenter {
 
   constructor(view) {
     super(null, view);
+
+    view.addEventListener('click', () => {
+      view.querySelectorAll('.icon').forEach((element) => element.classList.remove('selected'));
+    });
   }
 
   /**
