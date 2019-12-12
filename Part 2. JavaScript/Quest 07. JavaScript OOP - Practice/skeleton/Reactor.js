@@ -41,8 +41,21 @@ async function loadRoot() {
 }
 
 function setUpDesktop() {
-  this.scene.desktopPresenter.onOpenItem = (presenter, event, data) => {
+  this.scene.desktopPresenter.onOpenItem =
+    (presenter, event, data) => handleOpen.call(this, presenter, event, data);
+}
+
+/**
+ * 
+ * @param {DirectoryPresenter} presenter 
+ * @param {Event} event 더블클릭 이벤트.
+ * @param {FileViewData} data 선택된 파일.
+ */
+function handleOpen(presenter, event, data) {
+  if (data.file instanceof QDirectory) {
     console.log('open new window here');
     // presenter.displayList(data.file.content);
-  };
+  } else {
+    console.log(`open file ${data.file}`);
+  }
 }

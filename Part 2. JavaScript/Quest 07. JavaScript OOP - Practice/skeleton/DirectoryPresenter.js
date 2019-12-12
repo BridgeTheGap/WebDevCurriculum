@@ -18,7 +18,7 @@ export default class DirectoryPresenter {
     list.forEach((file, i) => {
       const rect = this.alignment.getRect(i, this.view.style.width);
       const icon = createIcon(file, rect);
-      icon.addEventListener('click', (e) => toggleOne.call(this, e));
+      icon.addEventListener('click', (e) => selectOne.call(this, e));
       icon.addEventListener('dblclick', (e) => {
         selectOne.call(this, e);
         this.onOpenItem(this, e, file)
