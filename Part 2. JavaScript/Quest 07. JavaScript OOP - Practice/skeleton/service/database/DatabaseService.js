@@ -19,4 +19,10 @@ export default class DatabaseService {
    * @param {string} path 삭제할 경로.
    */
   removeFileAtPath(path) { throw 'subclass'; }
+
+  /**
+   * 경로에 파일이 있는지 확인 (디렉토리 포함).
+   * @param {string} path 경로.
+   */
+  hasFileAtPath(path) { throw 'subclass'; }
 }

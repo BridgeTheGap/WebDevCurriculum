@@ -25,4 +25,8 @@ export default class LocalDatabaseService extends DatabaseService {
   removeFileAtPath(path) {
     this.storage.removeItem(path);
   }
+
+  hasFileAtPath(path) {
+    return this.storage.getItem(path) !== null;
+  }
 }
