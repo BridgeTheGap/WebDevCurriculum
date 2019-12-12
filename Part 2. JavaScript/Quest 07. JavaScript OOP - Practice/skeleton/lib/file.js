@@ -2,7 +2,7 @@ export const FileType = {
   FILE: 'file',
   DIRECTORY: 'directory',
 };
-
+// TODO: LL 형태로 parent: QDirectory를 넣자.
 export class QFile {
   /**
    * @param {string} name 파일의 이름.

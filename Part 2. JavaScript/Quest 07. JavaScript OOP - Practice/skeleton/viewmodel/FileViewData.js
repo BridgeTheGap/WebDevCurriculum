@@ -1,4 +1,5 @@
-import { QDirectory } from '../lib/file.js';
+import { QFile, QDirectory } from '../lib/file.js';
+import { Point } from '../lib/dimen.js';
 
 export default class FileViewData {
 

@@ -7,6 +7,14 @@
   position: absolute;
 }
 
+.desktop .window {
+  position: absolute;
+  background-color: white;
+  border: 1px solid gray;
+  width: 400px;
+  height: 340px;
+}
+
 .desktop-item {
   position: absolute;
   display: flex;
@@ -38,7 +46,7 @@
   margin-top: -2px;
 }
 
-.label { 
+.label {
   font-size: 12px;
   font-family: sans-serif;
 }

@@ -1,6 +1,8 @@
 import FileViewData from './viewmodel/FileViewData.js';
 import { QFile, QDirectory } from './lib/file.js';
 import DataManager from './DataManager.js';
+import Scene from './Scene.js';
+import DirectoryPresenter from './DirectoryPresenter.js';
 
 export default class Reactor {
   /**
@@ -53,8 +55,16 @@ function setUpDesktop() {
  */
 function handleOpen(presenter, event, data) {
   if (data.file instanceof QDirectory) {
-    console.log('open new window here');
-    // presenter.displayList(data.file.content);
+    // FIXME: QFile parent 구현 후 uncomment
+    // data.file.content = await this.dataManager.loadDirectory()
+    /* mock code */
+    const content = [
+      new QDirectory(`foo_in_${data.file.name}`),
+      new QFile(`bar_in_${data.file.name}`),
+      new QFile(`baz_in_${data.file.name}`),
+    ].map(file => new FileViewData(file));
+    /* mock code end */
+    this.scene.desktopPresenter.displayDirectory(data.file, content);
   } else {
     console.log(`open file ${data.file}`);
   }
