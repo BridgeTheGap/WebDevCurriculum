@@ -7,6 +7,12 @@
   position: absolute;
 }
 
+.desktop-item { 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .icon.icon {
   display: flex;
   font-size: 48px;
@@ -22,4 +28,5 @@
 
 .icon.selected {
   border: 2px solid blue;
+  background-color: rgba(0, 0, 255, 0.1);
 }
