@@ -1,5 +1,5 @@
 import FileViewData from './viewmodel/FileViewData.js';
-import { QFile, QDirectory, FileType } from './lib/file.js';
+import { QFile, QDirectory } from './lib/file.js';
 import DataManager from './DataManager.js';
 
 export default class Reactor {
