@@ -5,15 +5,15 @@
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="./desktop.css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<script src="./desktop.js"></script>
 </head>
 
 <body>
 	<section class="desktop">
 	</section>
 
-	<script>
-		new Scene(document);
+	<script type="module">
+		import { Scene } from './desktop.js';
+		const scene = new Scene(document);
 	</script>
 </body>
 
