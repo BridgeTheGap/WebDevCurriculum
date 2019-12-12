@@ -9,28 +9,40 @@ export default class Reactor {
   constructor(scene) {
     this.scene = scene;
     this.dataManager = new DataManager();
-    window.onload = () => { this.loadRoot() };
+    window.onload = () => {
+      loadRoot.call(this);
+      setUpDesktop.call(this);
+    };
   }
 
-  async loadRoot() {
-    console.log('loaded!');
+}
 
-    let fileList;
+async function loadRoot() {
+  console.log('loaded!');
 
-    try {
-      fileList = await this.dataManager.loadDirectory('/');
-    } catch (e) {
-      console.error(e);
+  let fileList;
 
-      fileList = [
-        new QDirectory('foo'),
-        new QFile('bar'),
-        new QFile('baz'),
-      ]
-      this.dataManager.saveDirectory('/', JSON.stringify(fileList));
-    }
+  try {
+    fileList = await this.dataManager.loadDirectory('/');
+  } catch (e) {
+    console.error(e);
 
-    const viewData = fileList.map((file) => new FileViewData(file));
-    this.scene.desktopPresenter.displayList(viewData);
+    fileList = [
+      new QDirectory('foo'),
+      new QFile('bar'),
+      new QFile('baz'),
+    ]
+    this.dataManager.saveDirectory('/', JSON.stringify(fileList));
+    this.dataManager.saveDirectory('/foo', '');
   }
+
+  const viewData = fileList.map((file) => new FileViewData(file));
+  this.scene.desktopPresenter.displayList(viewData);
+}
+
+function setUpDesktop() {
+  this.scene.desktopPresenter.onOpenItem = (presenter, event, data) => {
+    console.log('open new window here');
+    // presenter.displayList(data.file.content);
+  };
 }

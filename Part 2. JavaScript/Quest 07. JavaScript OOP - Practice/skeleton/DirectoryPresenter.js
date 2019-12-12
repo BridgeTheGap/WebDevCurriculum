@@ -18,7 +18,11 @@ export default class DirectoryPresenter {
     list.forEach((file, i) => {
       const rect = this.alignment.getRect(i, this.view.style.width);
       const icon = createIcon(file, rect);
-      icon.addEventListener('click', (e) => selectOne(e, this.view));
+      icon.addEventListener('click', (e) => toggleOne.call(this, e));
+      icon.addEventListener('dblclick', (e) => {
+        selectOne.call(this, e);
+        this.onOpenItem(this, e, file)
+      });
       this.view.appendChild(icon);
     })
   }
@@ -54,27 +58,24 @@ function createIcon(file, rect) {
   return icon
 }
 
-function selectOne(event, view) {
+function toggleOne(event) {
   event.stopPropagation();
-  view.querySelectorAll('.icon').forEach((element) => {
+  this.view.querySelectorAll('.icon').forEach((element) => {
     if (element === event.target) {
-      toggleSelection(event);
+      element.classList.toggle('selected');
     } else {
       element.classList.remove('selected');
     }
   });
 }
 
-function toggleSelection(event) {
-  toggleClassAttribute(event.target.classList, 'selected');
-}
-
-// TODO: move to library
-
-function toggleClassAttribute(classList, value) {
-  if (classList.contains(value)) {
-    classList.remove(value);
-  } else {
-    classList.add(value);
-  }
+function selectOne(event) {
+  event.stopPropagation();
+  this.view.querySelectorAll('.icon').forEach((element) => {
+    if (element === event.target) {
+      element.classList.add('selected');
+    } else {
+      element.classList.remove('selected');
+    }
+  });
 }
