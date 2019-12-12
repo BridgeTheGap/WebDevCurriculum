@@ -29,7 +29,7 @@ async function loadRoot() {
 
     fileList = [
       new QDirectory('foo'),
-      new QFile('bar'),
+      new QDirectory('bar'),
       new QFile('baz'),
     ]
     this.dataManager.saveDirectory('/', JSON.stringify(fileList));

@@ -4,9 +4,14 @@ import LocalDatabaseService from './service/database/LocalDatabaseService.js';
 export default class DataManager {
 
   constructor() {
-    this.root = window.localStorage.getItem('/');
     this.database = new LocalDatabaseService([stoj, jtof]);
-    // this.clearDirectory('/');
+    // this.deleteDirectory('/');
+
+    if (this.database.hasFileAtPath('/')) {
+      this.root = this.database.loadContentsAtPath('/');
+    } else {
+      this.root = this.database.writeContentToPath('/', JSON.stringify(null));
+    }
   }
 
   /**
