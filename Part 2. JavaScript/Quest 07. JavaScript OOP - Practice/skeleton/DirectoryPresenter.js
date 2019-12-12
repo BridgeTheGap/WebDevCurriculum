@@ -9,6 +9,10 @@ export default class DirectoryPresenter {
   constructor(alignment, view) {
     this.alignment = alignment || new FileAlignment();
     this.view = view;
+
+    view.addEventListener('mousedown', (e) => onMouseDown.call(this, e));
+    view.addEventListener('mousemove', onMouseMove);
+    view.addEventListener('mouseup', onMouseUp);
   }
 
   /**
@@ -58,16 +62,16 @@ function createIcon(file, rect) {
   return icon
 }
 
-function toggleOne(event) {
-  event.stopPropagation();
-  this.view.querySelectorAll('.icon').forEach((element) => {
-    if (element === event.target) {
-      element.classList.toggle('selected');
-    } else {
-      element.classList.remove('selected');
-    }
-  });
-}
+// function toggleOne(event) {
+//   event.stopPropagation();
+//   this.view.querySelectorAll('.icon').forEach((element) => {
+//     if (element === event.target) {
+//       element.classList.toggle('selected');
+//     } else {
+//       element.classList.remove('selected');
+//     }
+//   });
+// }
 
 function selectOne(event) {
   event.stopPropagation();
@@ -78,4 +82,39 @@ function selectOne(event) {
       element.classList.remove('selected');
     }
   });
+}
+
+let mouseDownElement = null;
+// 아이콘의 좌상단에서 커서가 벗어난 만큼의 `DOMPoint` 값. 
+let cursorOffset = null;
+
+function onMouseDown(event) {
+  const location = new DOMPoint(event.clientX, event.clientY);
+
+  for (let icon of this.view.querySelectorAll('.icon')) {
+    const frame = icon.getBoundingClientRect();
+    const isClickInIcon = frame.containsPoint(location);
+
+    if (!isClickInIcon) continue;
+
+    mouseDownElement = icon;
+    // FIXME: 뭔가 잘 안 맞고 있다.
+    cursorOffset = new DOMPoint(location.x - frame.x, location.y - frame.y);
+
+    break;
+  }
+}
+
+function onMouseUp(event) {
+  mouseDownElement = null;
+  cursorOffset = null;
+}
+
+function onMouseMove(event) {
+  if (!mouseDownElement) return;
+
+  const left = event.clientX - cursorOffset.x;
+  const top = event.clientY - cursorOffset.y;
+  mouseDownElement.style.left = `${left}px`;
+  mouseDownElement.style.top = `${top}px`;
 }

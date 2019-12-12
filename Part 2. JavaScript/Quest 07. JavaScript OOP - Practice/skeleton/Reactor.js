@@ -59,3 +59,12 @@ function handleOpen(presenter, event, data) {
     console.log(`open file ${data.file}`);
   }
 }
+
+/**
+ * @param {DOMPoint} point 
+ * @returns {boolean}
+ */
+DOMRect.prototype.containsPoint = function (point) {
+  return (point.x >= this.x && point.x <= this.x + this.width)
+    && (point.y >= this.y && point.y <= this.y + this.height);
+};
