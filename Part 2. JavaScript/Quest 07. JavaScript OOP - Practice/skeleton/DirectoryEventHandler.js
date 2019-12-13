@@ -4,7 +4,7 @@ import { deselectAll } from './lib/viewExt.js';
 export default class DirectoryEventHandler {
 
   // FIXME: default value 없애기. (현재는 동작 깨지지 않도록 기본값 제공)
-  constructor(view, selector = '.desktop-item') {
+  constructor(view, selector) {
     this.view = view;
     this.selector = selector;
     this.mouseDownElement = null;

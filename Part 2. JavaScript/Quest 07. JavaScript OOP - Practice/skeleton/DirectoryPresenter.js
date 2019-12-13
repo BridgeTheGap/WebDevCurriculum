@@ -11,7 +11,7 @@ export default class DirectoryPresenter {
     this.alignment = alignment || new ItemAlignment();
     this.view = view;
     // TODO: event handling 순위를 정하기 위해 list로 만드는 게 더 좋을 것 같다.
-    this.handler = new DirectoryEventHandler(view);
+    this.handler = new DirectoryEventHandler(view, '.desktop-item');
 
     view.addEventListener('mousedown', (e) => this.handler.onMouseDown(e));
     view.addEventListener('mousemove', (e) => this.handler.onMouseMove(e));
