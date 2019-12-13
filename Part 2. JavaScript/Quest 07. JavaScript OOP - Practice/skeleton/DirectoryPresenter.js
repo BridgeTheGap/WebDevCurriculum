@@ -10,6 +10,7 @@ export default class DirectoryPresenter {
   constructor(alignment, view) {
     this.alignment = alignment || new ItemAlignment();
     this.view = view;
+    // TODO: event handling 순위를 정하기 위해 list로 만드는 게 더 좋을 것 같다.
     this.handler = new DirectoryEventHandler(view);
 
     view.addEventListener('mousedown', (e) => this.handler.onMouseDown(e));

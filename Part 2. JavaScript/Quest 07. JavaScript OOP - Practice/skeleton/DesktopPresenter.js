@@ -1,6 +1,18 @@
 import DirectoryPresenter from './DirectoryPresenter.js';
 import { QDirectory } from './lib/file.js';
 import FileViewData from './viewmodel/FileViewData.js';
+import DirectoryEventHandler from './DirectoryEventHandler.js';
+
+/**
+ * 발생 이벤트가 해당 DOM Element 내에서 이루어졌는지 판단.
+ * - Precondition: 좌표계가 같은지 여부는 caller에서 확인.
+ * @param {Event} 
+ * @returns {boolean} 
+ */
+Element.prototype.isEventInBounds = function (event) {
+  const location = new DOMPoint(event.clientX, event.clientY);
+  return this.getBoundingClientRect().containsPoint(location);
+};
 
 const presenterList = [];
 
@@ -19,13 +31,25 @@ export default class DesktopPresenter extends DirectoryPresenter {
     const view = createDirectoryWindow(dir);
     // TODO: onClose 연결은 어떻게?
     const presenter = new DirectoryPresenter(null, view);
+    const handler = new DirectoryEventHandler(this.view, '.window');
+
     presenter.onClose = (p, e) => { this.onClose(p, e); };
     presenter.onOpenItem = (p, e, d) => { this.onOpenItem(p, e, d); };
     presenter.displayList(content);
 
-    // FIXME: 디렉토리 창에서의 선택과 데스크탑에서 선택 로직 수정.
-    // 1. 바탕화면 탭이 디렉토리 내의 파일도 선택 해제 중.
-    // 2. 디렉토리 내의 드래그 좌표가 데스크탑 기준.
+    const titleBar = view.querySelector('.title-bar');
+    view.addEventListener('mousedown', (e) => {
+      if (!titleBar.isEventInBounds(e)) return;
+      handler.onMouseDown(e);
+    });
+    view.addEventListener('mousemove', (e) => {
+      if (!titleBar.isEventInBounds(e)) return;
+      handler.onMouseMove(e);
+    });
+    view.addEventListener('mouseup', (e) => {
+      if (!titleBar.isEventInBounds(e)) return;
+      handler.onMouseUp(e);
+    });
 
     presenterList.push(presenter);
     this.view.appendChild(view);

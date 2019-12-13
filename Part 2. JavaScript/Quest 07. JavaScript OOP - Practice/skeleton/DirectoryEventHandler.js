@@ -19,9 +19,9 @@ export default class DirectoryEventHandler {
 
     for (let item of this.view.querySelectorAll(this.selector)) {
       const frame = item.getBoundingClientRect();
-      const isClickInIcon = frame.containsPoint(location);
+      const isClickInBounds = frame.containsPoint(location);
 
-      if (!isClickInIcon) continue;
+      if (!isClickInBounds) continue;
 
       this.mouseDownElement = item;
       this.cursorOffset = new DOMPoint(location.x - frame.x, location.y - frame.y);
@@ -41,6 +41,8 @@ export default class DirectoryEventHandler {
 
   onMouseMove(event) {
     if (!this.mouseDownElement) return;
+
+    event.stopPropagation();
 
     const viewFrame = this.view.getBoundingClientRect();
     const left = event.clientX - this.cursorOffset.x - viewFrame.x;
