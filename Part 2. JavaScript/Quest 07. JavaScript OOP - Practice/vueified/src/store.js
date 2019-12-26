@@ -29,10 +29,12 @@ export default {
   },
   async initializeAction() {
     this.state.isLoading = true;
-    this.state.root = new QDirectory('');
-    this.state.root.setContent('/', await db.init());
-    console.log(`${this.state.root}`);
-    this.state.isLoading = false;
+    setTimeout(async () => {
+      this.state.root = new QDirectory('');
+      this.state.root.setContent('/', await db.init());
+      console.log(`${this.state.root}`);
+      this.state.isLoading = false;
+    }, 2000);
   },
   /**
    *

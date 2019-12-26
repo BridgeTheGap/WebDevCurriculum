@@ -1,18 +1,22 @@
 <template>
-  <div id="root"></div>
+  <div id="root">
+    <Desktop v-if="root" :content="root.content" />
+  </div>
 </template>
 
 <script>
+/* eslint-disable no-console */
 import store from './store.js';
+import Desktop from './components/Desktop';
 
 export default {
   name: 'app',
   data() {
-    return store;
+    return store.state;
   },
-  components: {},
+  components: { Desktop },
   created() {
-    this.initializeAction();
+    store.initializeAction();
   }
 };
 </script>
