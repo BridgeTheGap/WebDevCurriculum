@@ -46,7 +46,7 @@ export class QDirectory extends QFile {
     });
   }
   toString() {
-    return `QDirectory: { name: ${this.name} }`;
+    return `QDirectory: { name: ${this.name}, contentCount: ${this.content.length} }`;
   }
   /**
    * `path`에 있는 directory에 `content`를 넣음.
