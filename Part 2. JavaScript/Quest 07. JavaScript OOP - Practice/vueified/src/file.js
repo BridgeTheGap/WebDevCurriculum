@@ -56,7 +56,6 @@ export class QDirectory extends QFile {
    * @param {QFile[]} newContent 경로의 directory에 넣을 파일들.
    */
   setContent(path, newContent) {
-    _setContent(path.split('/'), newContent);
     let pathList;
     if (path === '/' || (pathList = path.split('/')).length <= 1) {
       this.content = newContent;
