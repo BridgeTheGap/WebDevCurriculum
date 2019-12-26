@@ -33,7 +33,7 @@ async function loadRoot() {
       new QDirectory('foo'),
       new QDirectory('bar'),
       new QFile('baz'),
-    ]
+    ];
     this.dataManager.saveDirectory('/', JSON.stringify(fileList));
     this.dataManager.saveDirectory('/foo', '');
   }
