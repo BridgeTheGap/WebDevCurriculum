@@ -52,7 +52,7 @@ export class QDirectory extends QFile {
    * `path`에 있는 directory에 `content`를 넣음.
    * 기존 `path`에 파일들이 있을 경우 덮어씀.
    * @throws {'INVALID_ARGUMENT'} 경로가 directory로 이어지지 않을 경우. 중간 경로에 디렉토리가 없거나 최종 경로가 디렉토리가 아닐 경우.
-   * @param {string} path 경로 string. format: `/path/to/set`
+   * @param {string} path 현재 위치 기준 경로 string. format: `/path/to/set`
    * @param {QFile[]} newContent 경로의 directory에 넣을 파일들.
    */
   setContent(path, newContent) {
