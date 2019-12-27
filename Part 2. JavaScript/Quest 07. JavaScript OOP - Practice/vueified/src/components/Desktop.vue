@@ -1,7 +1,7 @@
 <template>
   <div class="desktop">
     <div v-for="item in itemList" :key="item.file.name">
-      <FolderItem :item="item" @onClickFolderItem="handleFolderItemClick" />
+      <FolderItem :item="item" @onMouseDown="onMouseDownItem" />
     </div>
   </div>
 </template>
@@ -34,7 +34,7 @@ export default {
     }
   },
   methods: {
-    handleFolderItemClick(sender) {
+    onMouseDownItem(sender) {
       this.itemList.forEach(item => (item.isSelected = item === sender));
     }
   }
