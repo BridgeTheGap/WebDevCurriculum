@@ -1,5 +1,5 @@
 <template>
-  <div class="desktop">
+  <div class="desktop" @mousedown.stop="onMouseDownBackground">
     <div v-for="item in itemList" :key="item.file.name">
       <FolderItem :item="item" @onMouseDown="onMouseDownItem" />
     </div>
@@ -35,7 +35,14 @@ export default {
   },
   methods: {
     onMouseDownItem(sender) {
-      this.itemList.forEach(item => (item.isSelected = item === sender));
+      this.itemList.forEach(item => {
+        item.isSelected = item === sender;
+      });
+    },
+    onMouseDownBackground() {
+      this.itemList.forEach(item => {
+        item.isSelected = false;
+      });
     }
   }
 };
