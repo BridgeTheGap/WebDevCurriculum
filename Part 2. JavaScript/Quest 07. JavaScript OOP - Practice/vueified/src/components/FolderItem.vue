@@ -3,7 +3,9 @@
     class="desktop-item"
     :class="{ selected: item.isSelected }"
     :style="{ left: x, top: y }"
-    @mousedown.stop="$emit('onMouseDown', item)"
+    @mousedown.stop="$emit('onMouseDown', { item, $event })"
+    @mousemove.stop="$emit('onMouseMove', { item, $event })"
+    @mouseup.stop="$emit('onMouseUp', { item, $event })"
   >
     <i class="material-icons icon">{{ item.icon }}</i>
     <div class="label">{{ item.file.name }}</div>
@@ -16,6 +18,7 @@ import FileViewData from '../types/FileViewData.js';
 
 export default {
   props: {
+    // TODO: item의 property를 props로 만들자.
     item: {
       type: FileViewData,
       required: true

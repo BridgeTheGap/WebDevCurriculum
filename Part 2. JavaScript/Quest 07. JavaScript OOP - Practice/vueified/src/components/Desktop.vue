@@ -1,7 +1,12 @@
 <template>
   <div class="desktop" @mousedown.stop="onMouseDownBackground">
     <div v-for="item in itemList" :key="item.file.name">
-      <FolderItem :item="item" @onMouseDown="onMouseDownItem" />
+      <FolderItem
+        :item="item"
+        @onMouseDown="onMouseDownItem"
+        @onMouseMove="onMouseMoveItem"
+        @onMouseUp="onMouseUpItem"
+      />
     </div>
   </div>
 </template>
@@ -22,10 +27,14 @@ export default {
       required: true
     }
   },
-  data() {
-    return { itemList: null };
-  },
   components: { FolderItem },
+  data() {
+    return {
+      itemList: null,
+      focusedItem: null,
+      clickLoc: null
+    };
+  },
   watch: {
     content(newValue) {
       this.itemList = newValue.map(
@@ -34,10 +43,23 @@ export default {
     }
   },
   methods: {
-    onMouseDownItem(sender) {
+    onMouseDownItem({ item: sender, $event }) {
       this.itemList.forEach(item => {
         item.isSelected = item === sender;
       });
+      this.clickLoc = new DOMPoint($event.clientX, $event.clientY);
+      this.focusedItem = sender;
+    },
+    onMouseMoveItem({ $event }) {
+      if (!this.focusedItem) return;
+      // TODO: Assert this.focusedItem === sender
+      this.focusedItem.location.origin.x += $event.clientX - this.clickLoc.x;
+      this.focusedItem.location.origin.y += $event.clientY - this.clickLoc.y;
+      this.clickLoc = new DOMPoint($event.clientX, $event.clientY);
+    },
+    onMouseUpItem() {
+      this.clickLoc = null;
+      this.focusedItem = null;
     },
     onMouseDownBackground() {
       this.itemList.forEach(item => {
