@@ -1,6 +1,6 @@
 <template>
   <div class="window" @mousedown.stop="onMouseDownBackground">
-    <FolderItem
+    <FileIcon
       v-for="item in itemList"
       :key="item.file.name"
       :item="item"
@@ -13,7 +13,7 @@
 
 <script>
 /* eslint-disable no-console */
-import FolderItem from './FolderItem';
+import FileIcon from './FileIcon';
 import FileViewData from '../types/FileViewData.js';
 import ItemAlignment from '../types/HorizontalItemAlignment.js';
 
@@ -27,7 +27,7 @@ export default {
       required: true
     }
   },
-  components: { FolderItem },
+  components: { FileIcon },
   data() {
     return {
       itemList: null,
