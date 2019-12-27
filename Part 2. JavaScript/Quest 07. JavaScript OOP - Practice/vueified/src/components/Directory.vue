@@ -1,13 +1,13 @@
 <template>
   <div class="window" @mousedown.stop="onMouseDownBackground">
-    <div v-for="item in itemList" :key="item.file.name">
-      <FolderItem
-        :item="item"
-        @onMouseDown="onMouseDownItem"
-        @onMouseMove="onMouseMoveItem"
-        @onMouseUp="onMouseUpItem"
-      />
-    </div>
+    <FolderItem
+      v-for="item in itemList"
+      :key="item.file.name"
+      :item="item"
+      @onMouseDown="onMouseDownItem"
+      @onMouseMove="onMouseMoveItem"
+      @onMouseUp="onMouseUpItem"
+    />
   </div>
 </template>
 
