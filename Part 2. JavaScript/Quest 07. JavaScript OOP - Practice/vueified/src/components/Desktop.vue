@@ -1,12 +1,13 @@
 <template>
   <div class="desktop">
-    <div v-for="item in itemList" :key="item.name">
-      <FolderItem :item="item" />
+    <div v-for="item in itemList" :key="item.file.name">
+      <FolderItem :item="item" @onClickFolderItem="handleFolderItemClick" />
     </div>
   </div>
 </template>
 
 <script>
+/* eslint-disable no-console */
 import FolderItem from './FolderItem';
 import FileViewData from '../types/FileViewData.js';
 import ItemAlignment from '../types/HorizontalItemAlignment.js';
@@ -21,14 +22,22 @@ export default {
       required: true
     }
   },
-  computed: {
-    itemList() {
-      return this.content.map(
+  data() {
+    return { itemList: null };
+  },
+  components: { FolderItem },
+  watch: {
+    content(newValue) {
+      this.itemList = newValue.map(
         (element, i) => new FileViewData(element, alignment.getRect(i, 1000))
       );
     }
   },
-  components: { FolderItem }
+  methods: {
+    handleFolderItemClick(sender) {
+      this.itemList.forEach(item => (item.isSelected = item === sender));
+    }
+  }
 };
 </script>
 

@@ -34,7 +34,7 @@ export default {
       this.state.root.setContent('/', await db.init());
       console.log(`${this.state.root}`);
       this.state.isLoading = false;
-    }, 2000);
+    }, 0);
   },
   /**
    *

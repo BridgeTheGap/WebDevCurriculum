@@ -1,5 +1,10 @@
 <template>
-  <div class="desktop-item" :style="{ left: x, top: y }">
+  <div
+    class="desktop-item"
+    :class="{ selected: item.isSelected }"
+    :style="{ left: x, top: y }"
+    @mousedown.stop="$emit('onClickFolderItem', item)"
+  >
     <i class="material-icons icon">{{ item.icon }}</i>
     <div class="label">{{ item.file.name }}</div>
   </div>

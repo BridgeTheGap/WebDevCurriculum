@@ -10,6 +10,7 @@ export default class FileViewData {
   constructor(file, location) {
     this.file = file;
     this.location = location;
+    this.isSelected = false;
   }
 
   /**
