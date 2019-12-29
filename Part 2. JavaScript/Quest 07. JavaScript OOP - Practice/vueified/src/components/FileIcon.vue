@@ -6,6 +6,7 @@
     @mousedown.stop="$emit('onMouseDown', { item, $event })"
     @mousemove.stop="$emit('onMouseMove', { item, $event })"
     @mouseup.stop="$emit('onMouseUp', { item, $event })"
+    @dblclick.stop="$emit('onDoubleClick', { item, $event })"
   >
     <i class="material-icons icon">{{ item.icon }}</i>
     <div class="label">{{ item.file.name }}</div>

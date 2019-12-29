@@ -7,6 +7,7 @@
       @onMouseDown="onMouseDownItem"
       @onMouseMove="onMouseMoveItem"
       @onMouseUp="onMouseUpItem"
+      @onDoubleClick="$emit('onDoubleClick', $event)"
     />
   </div>
 </template>

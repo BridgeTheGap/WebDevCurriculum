@@ -60,9 +60,9 @@ export class QDirectory extends QFile {
     if (path === '/' || (pathList = path.split('/')).length <= 1) {
       this.content = newContent;
     } else {
-      const index = this.content.indexOf((file) => {
+      const index = this.content.findIndex((file) => {
         if (!(file instanceof QDirectory)) return false;
-        if (file.name === pathList[0]) return true;
+        if (file.name === pathList[1]) return true;
         return false;
       });
 
