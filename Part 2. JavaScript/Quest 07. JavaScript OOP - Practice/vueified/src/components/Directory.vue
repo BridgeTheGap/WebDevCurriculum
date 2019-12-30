@@ -1,5 +1,5 @@
 <template>
-  <div class="window" @mousedown.stop="onMouseDownBackground">
+  <div :class="this.classList" @mousedown.stop="onMouseDownBackground">
     <FileIcon
       v-for="item in itemList"
       :key="item.file.name"
@@ -9,6 +9,7 @@
       @onMouseUp="onMouseUpItem"
       @onDoubleClick="$emit('onDoubleClick', $event)"
     />
+    <slot></slot>
   </div>
 </template>
 
@@ -23,6 +24,7 @@ const alignment = new ItemAlignment();
 export default {
   name: 'Directory',
   props: {
+    classList: Array,
     content: {
       type: Array,
       required: true
@@ -70,39 +72,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-.window .title-bar {
-  display: flex;
-  align-items: center;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: gray;
-  color: white;
-  font-size: medium;
-  font-weight: bold;
-  font-family: sans-serif;
-  width: 100%;
-  height: 30px;
-}
-
-.title-bar .name {
-  margin-left: 10px;
-  margin-right: auto;
-}
-
-.title-bar .control {
-  display: flex;
-  margin-right: 10px;
-}
-.control-button.control-button {
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0;
-  width: 30px;
-  height: 30px;
-}
-</style>

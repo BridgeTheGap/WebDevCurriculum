@@ -1,21 +1,20 @@
 <template>
-  <Directory :content="content" @onDoubleClick="onDoubleClick">
-    <!-- <div v-for="window in windowList">
-      <Window :viewModel="window" />
-    </div>-->
+  <Directory :class="['desktop']" :content="content" @onDoubleClick="onDoubleClick">
+    <Window v-for="window in windowList" :key="window.name" :viewModel="window" />
   </Directory>
 </template>
 
 <script>
 /* eslint-disable no-console */
 import Directory from './Directory';
+import Window from './Window';
 import { QFile, QDirectory } from '../file.js';
 import WindowViewData from '../types/WindowViewData.js';
 
 export default {
   name: 'Desktop',
   mixins: [Directory],
-  components: { Directory },
+  components: { Directory, Window },
   data() {
     return { windowList: [] };
   },
@@ -48,18 +47,10 @@ export default {
 </script>
 
 <style scoped>
-.window {
+.desktop {
   background-color: ivory;
   width: 100%;
   height: 100%;
   position: absolute;
-}
-
-.window .window {
-  position: absolute;
-  background-color: white;
-  border: 1px solid gray;
-  width: 400px;
-  height: 340px;
 }
 </style>
