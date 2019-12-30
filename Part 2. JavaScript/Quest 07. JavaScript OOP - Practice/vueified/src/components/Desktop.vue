@@ -1,38 +1,44 @@
 <template>
-  <Directory :content="content" @onDoubleClick="onDoubleClick"></Directory>
+  <Directory :content="content" @onDoubleClick="onDoubleClick">
+    <!-- <div v-for="window in windowList">
+      <Window :viewModel="window" />
+    </div>-->
+  </Directory>
 </template>
 
 <script>
-/* eslint-disable */
+/* eslint-disable no-console */
 import Directory from './Directory';
 import { QFile, QDirectory } from '../file.js';
+import WindowViewData from '../types/WindowViewData.js';
 
 export default {
   name: 'Desktop',
   mixins: [Directory],
   components: { Directory },
   data() {
-    return { windowList: null };
+    return { windowList: [] };
   },
   methods: {
     onDoubleClick({ item }) {
       if (item.file instanceof QDirectory) {
         // FIXME: QFile parent 구현 후 uncomment
         // data.file.content = await this.dataManager.loadDirectory()
-        /* mock code */
 
+        /* mock code */
         const index = this.content.indexOf(item.file);
 
         const content = [
           new QDirectory(`foo_in_${item.file.name}`),
           new QFile(`bar_in_${item.file.name}`),
           new QFile(`baz_in_${item.file.name}`)
-        ]; //.map(file => new FileViewData(file));
+        ];
         /* mock code end */
 
-        this.content[index].setContent(``, content);
-        // this.windowList.push()
-        // this.scene.desktopPresenter.displayDirectory(item.file, content);
+        const windowData = new WindowViewData(item.file);
+
+        this.content[index].setContent('', content);
+        this.windowList.push(windowData);
       } else {
         console.log(`open file ${item.file}`);
       }
