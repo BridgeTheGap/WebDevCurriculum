@@ -1,9 +1,10 @@
 <template>
   <div :class="this.classList" @mousedown.stop="onMouseDownBackground">
     <FileIcon
-      v-for="item in itemList"
-      :key="item.file.name"
-      :item="item"
+      v-for="(file, i) in content"
+      :key="file.name"
+      :file="file"
+      :origin="origin(i)"
       @onMouseDown="onMouseDownItem"
       @onMouseMove="onMouseMoveItem"
       @onMouseUp="onMouseUpItem"
@@ -16,7 +17,6 @@
 <script>
 /* eslint-disable no-console */
 import FileIcon from './FileIcon';
-import FileViewData from '../types/FileViewData.js';
 import ItemAlignment from '../types/HorizontalItemAlignment.js';
 
 const alignment = new ItemAlignment();
@@ -38,14 +38,11 @@ export default {
       clickLoc: null
     };
   },
-  watch: {
-    content(newValue) {
-      this.itemList = newValue.map(
-        (element, i) => new FileViewData(element, alignment.getRect(i, 1000))
-      );
-    }
-  },
   methods: {
+    origin(i) {
+      const rect = alignment.getRect(i, 1000);
+      return new DOMPoint(rect.origin.x, rect.origin.y);
+    },
     onMouseDownItem({ item: sender, $event }) {
       this.itemList.forEach(item => {
         item.isSelected = item === sender;
