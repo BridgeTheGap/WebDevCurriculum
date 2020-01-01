@@ -1,6 +1,16 @@
 <template>
   <Directory :class="['desktop']" :content="content" @onDoubleClick="onDoubleClick">
-    <Window v-for="window in windowList" :key="window.name" :viewModel="window" />
+    <Window
+      v-for="(window, index) in windowList"
+      :key="window.name + String(index)"
+      :x="window.frame.x"
+      :y="window.frame.y"
+      :content="window.fileList"
+      :directoryName="window.name"
+      @onMouseDown="onMouseDown"
+      @onMouseMove="onMouseMove"
+      @onMouseUp="onMouseUp"
+    />
   </Directory>
 </template>
 
@@ -10,6 +20,8 @@ import Directory from './Directory';
 import Window from './Window';
 import { QFile, QDirectory } from '../file.js';
 import WindowViewData from '../types/WindowViewData.js';
+
+let prev = null;
 
 export default {
   name: 'Desktop',
@@ -33,14 +45,35 @@ export default {
           new QFile(`baz_in_${item.file.name}`)
         ];
         /* mock code end */
-
+        const offset = (this.windowList.length + 1) * 80;
         const windowData = new WindowViewData(item.file);
+        windowData.frame.x = offset;
+        windowData.frame.y = offset;
 
         this.content[index].setContent('', content);
         this.windowList.push(windowData);
       } else {
         console.log(`open file ${item.file}`);
       }
+    },
+    onMouseDown({ $event }) {
+      prev = $event;
+    },
+    onMouseMove({ directoryName, $event }) {
+      if (!prev) return;
+
+      const dx = $event.clientX - prev.clientX;
+      const dy = $event.clientY - prev.clientY;
+
+      const item = this.windowList.find(e => e.name === directoryName);
+      item.frame.x += dx;
+      item.frame.y += dy;
+
+      prev = $event;
+      this.$forceUpdate();
+    },
+    onMouseUp() {
+      prev = null;
     }
   }
 };

@@ -1,35 +1,45 @@
 <template>
-  <div class="window">
-    <div class="title-bar">
-      <div class="name">{{ viewModel.name }}</div>
+  <div class="window" :style="{ left: `${x}px`, top: `${y}px` }">
+    <div
+      class="title-bar"
+      @mousedown.stop="$emit('onMouseDown', { directoryName, $event })"
+      @mousemove.stop="$emit('onMouseMove', { directoryName, $event })"
+      @mouseup.stop="$emit('onMouseUp', { directoryName, $event })"
+    >
+      <div class="name">{{ directoryName }}</div>
       <div class="control">
         <i class="material-icons control-button close">close</i>
       </div>
     </div>
-    <Directory :content="viewModel.fileList" />
+    <Directory :content="content" />
   </div>
 </template>
 
 <script>
 /* eslint-disable no-console */
-import WindowViewData from '../types/WindowViewData.js';
 import Directory from './Directory';
 
 export default {
+  name: 'Window',
+  components: { Directory },
   props: {
-    index: {
-      type: Number
-    },
-    viewModel: {
-      type: WindowViewData,
-      required: true
-    }
-  },
-  components: { Directory }
+    x: Number,
+    y: Number,
+    directoryName: String,
+    content: Array
+  }
 };
 </script>
 
 <style scoped>
+.window {
+  position: absolute;
+  background-color: white;
+  border: 1px solid gray;
+  width: 400px;
+  height: 360px;
+}
+
 .window .title-bar {
   display: flex;
   align-items: center;
@@ -54,6 +64,7 @@ export default {
   display: flex;
   margin-right: 10px;
 }
+
 .control-button.control-button {
   cursor: pointer;
   display: flex;
@@ -62,15 +73,5 @@ export default {
   margin: 0;
   width: 30px;
   height: 30px;
-}
-
-.window {
-  position: absolute;
-  background-color: white;
-  border: 1px solid gray;
-  top: 80px;
-  left: 80px;
-  width: 400px;
-  height: 360px;
 }
 </style>
