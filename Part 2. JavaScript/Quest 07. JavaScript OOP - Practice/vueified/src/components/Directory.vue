@@ -1,12 +1,12 @@
 <template>
   <div :class="this.classList" @mousedown.stop="onMouseDownBackground">
     <FileIcon
-      v-for="(file, i) in content"
+      v-for="file in content"
       :key="file.name"
-      :x="getX(i)"
-      :y="getY(i)"
+      :x="origin[file.name].x"
+      :y="origin[file.name].y"
       :fileName="file.name"
-      :icon="icon(i)"
+      :icon="icon(file)"
       :isSelected="selection[file.name]"
       @onMouseDown="onMouseDownItem"
       @onMouseMove="onMouseMoveItem"
@@ -20,11 +20,7 @@
 <script>
 /* eslint-disable no-console */
 import FileIcon from './FileIcon';
-import { fileIcon } from './directoryMethods.js';
-
-const fold = (obj, val) => {
-  obj[val.name] = false;
-};
+import { fileIcon, drag } from './directoryMethods.js';
 
 export default {
   name: 'Directory',
@@ -38,40 +34,28 @@ export default {
   components: { FileIcon },
   data() {
     return {
-      selection: this.content.reduce(fold, {}),
-      focusedIndex: null,
+      selection: {},
+      origin: {},
+      focused: null,
       clickLoc: null
     };
   },
+  watch: {
+    content() {
+      this.content.forEach((file, index) => {
+        this.selection[file.name] = false;
+        this.origin[file.name] = fileIcon.getRect(index).origin;
+      });
+    }
+  },
   methods: {
     ...fileIcon,
-    onMouseDownItem({ fileName, $event }) {
-      this.content.forEach(item => {
-        this.selection[item.name] = item.name === fileName;
-      });
-      this.clickLoc = new DOMPoint($event.clientX, $event.clientY);
-      this.focusedIndex = this.content.findIndex(
-        item => item.name === fileName
-      );
-      this.$forceUpdate();
-    },
-    onMouseMoveItem({ $event }) {
-      if (!this.focusedIndex) return;
-      // TODO: Assert this.focusedIndex === sender
-      const item = this.content[this.focusedIndex];
-      console.log(item);
-      item.origin.x += $event.clientX - this.clickLoc.x;
-      item.origin.y += $event.clientY - this.clickLoc.y;
-      this.clickLoc = new DOMPoint($event.clientX, $event.clientY);
-    },
-    onMouseUpItem() {
-      this.clickLoc = null;
-      this.focusedIndex = null;
-    },
+    ...drag,
     onMouseDownBackground() {
-      this.content.forEach(item => {
-        item.isSelected = false;
-      });
+      for (let key in this.selection) {
+        this.selection[key] = false;
+      }
+      this.$forceUpdate();
     }
   }
 };

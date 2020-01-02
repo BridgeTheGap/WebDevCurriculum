@@ -13,7 +13,31 @@ export const fileIcon = {
   getRect(i) {
     return alignment.getRect(i, 1000);
   },
-  icon(i) {
-    return this.content[i] instanceof QDirectory ? 'folder' : 'note';
+  icon(file) {
+    return file instanceof QDirectory ? 'folder' : 'note';
   }
+};
+
+export const drag = {
+  onMouseDownItem({ fileName, $event }) {
+    this.content.forEach(item => {
+      this.selection[item.name] = item.name === fileName;
+    });
+    this.clickLoc = new DOMPoint($event.clientX, $event.clientY);
+    this.focused = fileName;
+    this.$forceUpdate();
+  },
+  onMouseMoveItem({ $event }) {
+    if (!this.focused) return;
+    // TODO: Assert this.focusedIndex === sender
+    const item = this.origin[this.focused];
+    item.x += $event.clientX - this.clickLoc.x;
+    item.y += $event.clientY - this.clickLoc.y;
+    this.clickLoc = new DOMPoint($event.clientX, $event.clientY);
+    this.$forceUpdate();
+  },
+  onMouseUpItem() {
+    this.clickLoc = null;
+    this.focused = null;
+  },
 };
