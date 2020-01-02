@@ -3,8 +3,10 @@
     <FileIcon
       v-for="(file, i) in content"
       :key="file.name"
-      :file="file"
-      :origin="origin(i)"
+      :x="getX(i)"
+      :y="getY(i)"
+      :fileName="file.name"
+      :icon="icon(i)"
       :isSelected="selection[file.name]"
       @onMouseDown="onMouseDownItem"
       @onMouseMove="onMouseMoveItem"
@@ -19,6 +21,7 @@
 /* eslint-disable no-console */
 import FileIcon from './FileIcon';
 import ItemAlignment from '../types/HorizontalItemAlignment.js';
+import { QDirectory } from '../file.js';
 
 const alignment = new ItemAlignment();
 const fold = (obj, val) => {
@@ -43,16 +46,26 @@ export default {
     };
   },
   methods: {
-    origin(i) {
-      const rect = alignment.getRect(i, 1000);
-      return new DOMPoint(rect.origin.x, rect.origin.y);
+    getX(i) {
+      return this.getRect(i).origin.x;
+    },
+    getY(i) {
+      return this.getRect(i).origin.y;
+    },
+    getRect(i) {
+      return alignment.getRect(i, 1000);
+    },
+    icon(i) {
+      return this.content[i] instanceof QDirectory ? 'folder' : 'note';
     },
     onMouseDownItem({ fileName, $event }) {
       this.content.forEach(item => {
         this.selection[item.name] = item.name === fileName;
       });
       this.clickLoc = new DOMPoint($event.clientX, $event.clientY);
-      this.focusedIndex = this.content.findIndex(item => item.name === fileName);
+      this.focusedIndex = this.content.findIndex(
+        item => item.name === fileName
+      );
       this.$forceUpdate();
     },
     onMouseMoveItem({ $event }) {

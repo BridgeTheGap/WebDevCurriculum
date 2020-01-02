@@ -2,41 +2,25 @@
   <div
     class="desktop-item"
     :class="{ selected: isSelected }"
-    :style="{ left: x, top: y }"
+    :style="{ left: `${x}px`, top: `${y}px` }"
     @mousedown.stop="$emit('onMouseDown', { fileName, $event })"
     @mousemove.stop="$emit('onMouseMove', { fileName, $event })"
     @mouseup.stop="$emit('onMouseUp', { fileName, $event })"
     @dblclick.stop="$emit('onDoubleClick', { fileName, $event })"
   >
     <i class="material-icons icon">{{ icon }}</i>
-    <div class="label">{{ file.name }}</div>
+    <div class="label">{{ fileName }}</div>
   </div>
 </template>
 
 <script>
-/* eslint-disable no-console */
-import { QFile, QDirectory } from '../file.js';
-
 export default {
   props: {
-    // TODO: item의 property를 props로 만들자.
-    file: QFile,
-    origin: DOMPoint,
+    x: Number,
+    y: Number,
+    fileName: String,
+    icon: String,
     isSelected: Boolean
-  },
-  computed: {
-    x() {
-      return `${this.origin.x}px`;
-    },
-    y() {
-      return `${this.origin.y}px`;
-    },
-    icon() {
-      return this.file instanceof QDirectory ? 'folder' : 'note';
-    },
-    fileName() {
-      return this.file.name;
-    }
   }
 };
 </script>
