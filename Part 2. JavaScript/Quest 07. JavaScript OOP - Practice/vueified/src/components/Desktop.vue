@@ -31,29 +31,30 @@ export default {
     return { windowList: [] };
   },
   methods: {
-    onDoubleClick({ item }) {
-      if (item.file instanceof QDirectory) {
+    onDoubleClick({ fileName }) {
+      const item = this.content.find(item => item.name === fileName);
+      if (item instanceof QDirectory) {
         // FIXME: QFile parent 구현 후 uncomment
         // data.file.content = await this.dataManager.loadDirectory()
 
         /* mock code */
-        const index = this.content.indexOf(item.file);
+        const index = this.content.indexOf(item);
 
         const content = [
-          new QDirectory(`foo_in_${item.file.name}`),
-          new QFile(`bar_in_${item.file.name}`),
-          new QFile(`baz_in_${item.file.name}`)
+          new QDirectory(`foo_in_${item.name}`),
+          new QFile(`bar_in_${item.name}`),
+          new QFile(`baz_in_${item.name}`)
         ];
         /* mock code end */
         const offset = (this.windowList.length + 1) * 80;
-        const windowData = new WindowViewData(item.file);
+        const windowData = new WindowViewData(item);
         windowData.frame.x = offset;
         windowData.frame.y = offset;
 
         this.content[index].setContent('', content);
         this.windowList.push(windowData);
       } else {
-        console.log(`open file ${item.file}`);
+        console.log(`open file ${item}`);
       }
     },
     onMouseDown({ $event }) {
