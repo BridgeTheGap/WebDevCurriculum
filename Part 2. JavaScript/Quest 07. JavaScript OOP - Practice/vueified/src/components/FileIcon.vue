@@ -3,10 +3,10 @@
     class="desktop-item"
     :class="{ selected: isSelected }"
     :style="{ left: x, top: y }"
-    @mousedown.stop="$emit('onMouseDown', { item, $event })"
-    @mousemove.stop="$emit('onMouseMove', { item, $event })"
-    @mouseup.stop="$emit('onMouseUp', { item, $event })"
-    @dblclick.stop="$emit('onDoubleClick', { item, $event })"
+    @mousedown.stop="$emit('onMouseDown', { fileName, $event })"
+    @mousemove.stop="$emit('onMouseMove', { fileName, $event })"
+    @mouseup.stop="$emit('onMouseUp', { fileName, $event })"
+    @dblclick.stop="$emit('onDoubleClick', { fileName, $event })"
   >
     <i class="material-icons icon">{{ icon }}</i>
     <div class="label">{{ file.name }}</div>
@@ -21,12 +21,8 @@ export default {
   props: {
     // TODO: item의 property를 props로 만들자.
     file: QFile,
-    origin: DOMPoint
-  },
-  data() {
-    return {
-      isSelected: false
-    };
+    origin: DOMPoint,
+    isSelected: Boolean
   },
   computed: {
     x() {
@@ -38,8 +34,8 @@ export default {
     icon() {
       return this.file instanceof QDirectory ? 'folder' : 'note';
     },
-    item() {
-      return { file: this.file, origin: this.origin };
+    fileName() {
+      return this.file.name;
     }
   }
 };

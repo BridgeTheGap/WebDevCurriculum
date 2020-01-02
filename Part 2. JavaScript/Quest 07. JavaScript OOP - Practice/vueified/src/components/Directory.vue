@@ -5,6 +5,7 @@
       :key="file.name"
       :file="file"
       :origin="origin(i)"
+      :isSelected="selection[file.name]"
       @onMouseDown="onMouseDownItem"
       @onMouseMove="onMouseMoveItem"
       @onMouseUp="onMouseUpItem"
@@ -20,6 +21,9 @@ import FileIcon from './FileIcon';
 import ItemAlignment from '../types/HorizontalItemAlignment.js';
 
 const alignment = new ItemAlignment();
+const fold = (obj, val) => {
+  obj[val.name] = false;
+};
 
 export default {
   name: 'Directory',
@@ -33,8 +37,8 @@ export default {
   components: { FileIcon },
   data() {
     return {
-      itemList: null,
-      focusedItem: null,
+      selection: this.content.reduce(fold, {}),
+      focusedIndex: null,
       clickLoc: null
     };
   },
@@ -43,26 +47,29 @@ export default {
       const rect = alignment.getRect(i, 1000);
       return new DOMPoint(rect.origin.x, rect.origin.y);
     },
-    onMouseDownItem({ item: sender, $event }) {
-      this.itemList.forEach(item => {
-        item.isSelected = item === sender;
+    onMouseDownItem({ fileName, $event }) {
+      this.content.forEach(item => {
+        this.selection[item.name] = item.name === fileName;
       });
       this.clickLoc = new DOMPoint($event.clientX, $event.clientY);
-      this.focusedItem = sender;
+      this.focusedIndex = this.content.findIndex(item => item.name === fileName);
+      this.$forceUpdate();
     },
     onMouseMoveItem({ $event }) {
-      if (!this.focusedItem) return;
-      // TODO: Assert this.focusedItem === sender
-      this.focusedItem.location.origin.x += $event.clientX - this.clickLoc.x;
-      this.focusedItem.location.origin.y += $event.clientY - this.clickLoc.y;
+      if (!this.focusedIndex) return;
+      // TODO: Assert this.focusedIndex === sender
+      const item = this.content[this.focusedIndex];
+      console.log(item);
+      item.origin.x += $event.clientX - this.clickLoc.x;
+      item.origin.y += $event.clientY - this.clickLoc.y;
       this.clickLoc = new DOMPoint($event.clientX, $event.clientY);
     },
     onMouseUpItem() {
       this.clickLoc = null;
-      this.focusedItem = null;
+      this.focusedIndex = null;
     },
     onMouseDownBackground() {
-      this.itemList.forEach(item => {
+      this.content.forEach(item => {
         item.isSelected = false;
       });
     }
