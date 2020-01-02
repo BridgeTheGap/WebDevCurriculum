@@ -20,10 +20,8 @@
 <script>
 /* eslint-disable no-console */
 import FileIcon from './FileIcon';
-import ItemAlignment from '../types/HorizontalItemAlignment.js';
-import { QDirectory } from '../file.js';
+import { fileIcon } from './directoryMethods.js';
 
-const alignment = new ItemAlignment();
 const fold = (obj, val) => {
   obj[val.name] = false;
 };
@@ -46,18 +44,7 @@ export default {
     };
   },
   methods: {
-    getX(i) {
-      return this.getRect(i).origin.x;
-    },
-    getY(i) {
-      return this.getRect(i).origin.y;
-    },
-    getRect(i) {
-      return alignment.getRect(i, 1000);
-    },
-    icon(i) {
-      return this.content[i] instanceof QDirectory ? 'folder' : 'note';
-    },
+    ...fileIcon,
     onMouseDownItem({ fileName, $event }) {
       this.content.forEach(item => {
         this.selection[item.name] = item.name === fileName;
