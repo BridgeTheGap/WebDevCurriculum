@@ -1,8 +1,8 @@
 <template>
   <Directory :class="['desktop']" :content="content" @onDoubleClick="onDoubleClick">
     <Window
-      v-for="(window, index) in windowList"
-      :key="window.name + String(index)"
+      v-for="window in windowList"
+      :key="`window_${window.name}`"
       :x="window.frame.x"
       :y="window.frame.y"
       :content="window.fileList"
@@ -36,7 +36,6 @@ export default {
       if (item instanceof QDirectory) {
         // FIXME: QFile parent 구현 후 uncomment
         // data.file.content = await this.dataManager.loadDirectory()
-
         /* mock code */
         const index = this.content.indexOf(item);
 

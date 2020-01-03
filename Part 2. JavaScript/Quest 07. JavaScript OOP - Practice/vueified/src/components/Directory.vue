@@ -1,5 +1,5 @@
 <template>
-  <div :class="this.classList" @mousedown.stop="onMouseDownBackground">
+  <div @mousedown.stop.self="onMouseDownBackground">
     <FileIcon
       v-for="file in content"
       :key="file.name"
@@ -25,7 +25,6 @@ import { fileIcon, drag } from './directoryMethods.js';
 export default {
   name: 'Directory',
   props: {
-    classList: Array,
     content: {
       type: Array,
       required: true
@@ -40,23 +39,38 @@ export default {
       clickLoc: null
     };
   },
+  created() {
+    this.onSetContent();
+    console.log(this);
+  },
   watch: {
     content() {
-      this.content.forEach((file, index) => {
-        this.selection[file.name] = false;
-        this.origin[file.name] = fileIcon.getRect(index).origin;
-      });
+      this.onSetContent();
     }
   },
   methods: {
     ...fileIcon,
     ...drag,
-    onMouseDownBackground() {
+    onMouseDownBackground(e) {
+      console.log(`event: ${e.target.classList}`);
+      console.log(this);
+      console.log(`event: ${Object.getOwnPropertyNames(this.selection)}`);
+
       for (let key in this.selection) {
         this.selection[key] = false;
       }
       this.$forceUpdate();
+    },
+    onSetContent() {
+      this.content.forEach((file, index) => {
+        this.selection[file.name] = false;
+        this.origin[file.name] = fileIcon.getRect(index).origin;
+      });
     }
   }
 };
 </script>
+<style scoped>
+div {
+}
+</style>

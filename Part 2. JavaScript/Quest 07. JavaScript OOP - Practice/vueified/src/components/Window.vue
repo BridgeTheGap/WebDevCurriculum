@@ -11,7 +11,7 @@
         <i class="material-icons control-button close">close</i>
       </div>
     </div>
-    <Directory :content="content" />
+    <Directory :class="['content']" :content="content" />
   </div>
 </template>
 
@@ -25,8 +25,8 @@ export default {
   props: {
     x: Number,
     y: Number,
-    directoryName: String,
-    content: Array
+    content: Array,
+    directoryName: String
   }
 };
 </script>
@@ -63,6 +63,11 @@ export default {
 .title-bar .control {
   display: flex;
   margin-right: 10px;
+}
+
+.window .content {
+  width: 400px;
+  height: 330px;
 }
 
 .control-button.control-button {
